@@ -1,0 +1,32 @@
+{
+  "id": "Ew6WTcJRe3hJk3kbTZ",
+  "created": "2024-04-10T02:03:39.052Z",
+  "input": {
+    "output_format": "wav",
+    "quality": "high",
+    "sample_rate": 24000,
+    "seed": null,
+    "speed": 1,
+    "temperature": null,
+    "text": "그는 괜찮은 척 하려고 애쓰는 것 같았다.",
+    "voice": "s3://voice-cloning-zero-shot/7a5058bf-2364-4797-9ba3-0a8713917fc1/test/manifest.json"
+  },
+  "status": "pending",
+  "output": null,
+  "_links": [
+    {
+      "contentType": "application/json",
+      "description": "Fetches this job's data. Poll it for the latest status.",
+      "href": "https://api.play.ht/api/v2/tts/Ew6WTcJRe3hJk3kbTZ",
+      "method": "GET",
+      "rel": "self"
+    },
+    {
+      "contentType": "text/event-stream",
+      "description": "Fetches (live) the job status (in SSE/text stream format) as the generation progresses.",
+      "href": "https://api.play.ht/api/v2/tts/Ew6WTcJRe3hJk3kbTZ?format=event-stream",
+      "method": "GET",
+      "rel": "related"
+    }
+  ]
+}

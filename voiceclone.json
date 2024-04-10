@@ -1,0 +1,6 @@
+{
+  "id": "s3://voice-cloning-zero-shot/11f747eb-26a5-4630-83c5-f5cc80f7fbf1/test/manifest.json",
+  "name": "test",
+  "type": "instant",
+  "voice_engine": "PlayHT2.0"
+}
