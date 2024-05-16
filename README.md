@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+# CapstoneDesign-1-
+캡스톤디자인-1시경 프로젝트 Repository
+
 1. mysql에서 fairy_tail 데이터베이스 생성
 
     CREATE DATABASE fairy_tail
@@ -21,7 +23,3 @@ user = User.find(request.form['web_id']) -> 주석 처리
 이후 다시 위에서 했던 주석처리 부분을 원래대로 돌려두면 
 해당 ID와 비밀번호로 로그인 시 DB에서 유저 정보를 찾아 로그인이 됨
 해당 ID와 비밀번호가 아닐경우 등록되지 않은 유저라는 메세지를 남기며 로그인이 되지 않음
-=======
-# CapstoneDesign-1-
-캡스톤디자인-1시경 프로젝트 Repository
->>>>>>> 2b839e9 (Initial commit)
