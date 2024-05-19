@@ -47,7 +47,7 @@ class User(UserMixin):
     
     @staticmethod
     def create(web_id, user_password, page_id): # 아이디와 비밀번호, user_id로
-        user = User.find(web_id) # 해당 유저정보가 있는지 db에서 확인
+        user = User.find(web_id, user_password) # 해당 유저정보가 있는지 db에서 확인
         if user == None: # 없다면 db에 넣기
             mysql_db = conn_mysqldb()
             db_cursor = mysql_db.cursor()
