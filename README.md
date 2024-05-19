@@ -1,9 +1,6 @@
 # CapstoneDesign-1-
 캡스톤디자인-1시경 프로젝트 Repository
 
-# CapstoneDesign-1-
-캡스톤디자인-1시경 프로젝트 Repository
-
 1. mysql에서 fairy_tail 데이터베이스 생성
 
     CREATE DATABASE fairy_tail

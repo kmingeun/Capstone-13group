@@ -6,8 +6,8 @@ CREATE TABLE User_info (
     Web_ID VARCHAR(255) UNIQUE NOT NULL, -- 실제 웹에서 사용하는 ID --
     Password VARCHAR(255) NOT NULL,
     Page_ID CHAR(4),
-    Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Subscription_Status BOOLEAN DEFAULT FALSE,
+    Credit INT DEFAULT 0,
+    Subscription_type ENUM('basic', 'pro', 'pro+') DEFAULT NULL,
     Subscription_Start_Date DATE
 );
 
@@ -42,9 +42,11 @@ CREATE TABLE Audios (
 );
 
 CREATE TABLE session_info (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
     session_ip VARCHAR(255),
-    web_ID VARCHAR(255),
+    web_id VARCHAR(255),
     page VARCHAR(50),
-    access_time DATETIME
+    access_time DATETIME,
+    PRIMARY KEY (user_id, access_time), -- 복합 키
+    FOREIGN KEY (user_id) REFERENCES User_info(User_ID)
 );
