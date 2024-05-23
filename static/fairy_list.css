@@ -1,0 +1,337 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0 auto;
+    color: #3f464d;
+    font-family: "Spoqa Han Sans Neo", "Sans-serif";
+  }
+  
+  a {
+    all: unset;
+  }
+  
+  a:link {
+    text-decoration: none;
+    color: #3f464d;
+  }
+  
+  a:visited {
+    text-decoration: none;
+    color: #3f464d;
+  }
+  
+  a:active {
+    text-decoration: none;
+    color: #3f464d;
+  }
+  
+  a:hover {
+    text-decoration: none;
+    color: #3f464d;
+  }
+  
+  .inner {
+    width: 100%; 
+    height: 100%; 
+    margin: 0 auto; 
+    padding: 0rem 2rem; 
+    overflow: hidden; 
+  }
+  
+  header {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .head-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .head-container .head-brand {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .head-container .head-brand a:hover {
+    color: #2186c4;
+    cursor: pointer;
+  }
+  
+  .head-container .head-blog {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .head-container .head-blog a:hover {
+    color: #2186c4;
+    cursor: pointer;
+  }
+  
+  section {
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+  }
+  
+  .title-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+
+  .skill-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 0;
+  }
+  
+  .skill {
+    width: 25%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 9px;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+    transition: 0.4s;
+  }
+  
+  .skill:hover {
+    transform: translate(0, -5px);
+  }
+  
+  .skill-icon {
+    font-size: 2.5rem;
+    margin: 0 10px;
+  }
+  
+  .skill-title {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+  
+  .skill-name {
+    font-weight: bold;
+    color: #545e6f;
+    margin-bottom: 0.2rem;
+  }
+  
+  .skill-usage {
+    font-size: 0.9rem;
+    color: #545e6f;
+  }
+  
+  .python-style {
+    color: #2186c4;
+  }
+  
+  .analysis-style {
+    color: #ff8066;
+  }
+  
+  .ai-style {
+    color: #f7df1e;
+  }
+  
+  .vue-style {
+    color: #2e7d32;
+  }
+  
+  .roadmap-container {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  
+  .roadmap-title-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .roadmap-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #545e6f;
+  }
+  
+  .slide-prev {
+    font-size: 2rem;
+    cursor: pointer;
+    color: rgb(47, 48, 89);
+  }
+  
+  .slide-next {
+    font-size: 2rem;
+    cursor: pointer;
+    color: #cfd8dc;
+  }
+  
+  .slide-prev-hover:hover {
+    transition: transform 0.5s;
+    transform: translateX(-2px);
+  }
+  
+  .slide-next-hover:hover {
+    transition: transform 0.5s;
+    transform: translateX(2px);
+  }
+  
+  .arrow-container {
+    display: flex;
+  }
+  
+  .class-list {
+    display: flex;
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+    overflow: none;
+  }
+  
+  .class-card {
+    width: 300px;
+    box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.2);
+    border-radius: 8px;
+    margin: 0 10px;
+    transition: 0.4s;
+    flex-shrink: 0;
+  }
+  
+  .class-card:hover {
+    box-shadow: 10px 10px 10px 0px rgba(25, 42, 70, 0.2);
+    transform: translate(0, -5px);
+  }
+  
+  .class-image {
+    max-width: 300px;
+    border-radius: 8px 8px 0 0;
+    object-fit: contain;
+  }
+  
+  .class-container {
+    width: 100%;
+    padding: 0.5rem 1rem 1rem 1rem;
+  }
+  
+  .class-desc {
+    width: 100%;
+    margin-top: 0.5rem;
+    color: #545e6f;
+  }
+  
+  .class-desc:hover {
+    color: #2186c4;
+  }
+  
+  .class-title {
+    font-weight: bold;
+    color: inherit;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.5rem;
+  }
+  
+  .roadmap-desc {
+    display: visible;
+  }
+  
+  li a:hover {
+    cursor: pointer;
+  }
+  
+  footer {
+    border-top: 1px solid #e4e4e4;
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+    margin: 1rem 0;
+  }
+  
+  #backtotop {
+    background-color: rgb(47, 48, 89);
+    width: 40px;
+    height: 40px;
+    text-align: center;
+  
+    border-radius: 20px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition-property: background-color, opacity, visibility;
+    transition-duration: 0.3s, 0.5s, 0.5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 999;
+  }
+  
+  /* 아이콘 적용 방법
+    1. ::after (요소 뒤에 content 추가) 가상 요소에서,
+    2. content: "폰트어썸 유니코드" 를 넣고,
+    3. font-family: FontAwesome 이라고 넣으면 됨
+    */
+  #backtotop::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-size: 1.5rem;
+    line-height: 40px;
+    color: #fff;
+  }
+  
+  #backtotop.show:hover {
+    cursor: pointer;
+    background-color: #2186c4;
+  }
+  
+  #backtotop.show {
+    opacity: 1;
+    visibility: visible;
+    background-color: rgb(47, 48, 49);
+  }
+  
+  ul li img:hover {
+    cursor: grab; 
+  }
+  
+  ul li img:active {
+    cursor: grabbing;
+  }
+  
+  @media only screen and (min-width: 1200px) {
+    .inner {
+      max-width: 1200px;
+    }
+  }
+  
+  @media only screen and (max-width: 980px) {
+    .skill-container {
+      display: none;
+    }
+    .roadmap-desc {
+      display: none;
+    }
+  }
+  
