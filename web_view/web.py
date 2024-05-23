@@ -12,8 +12,9 @@ def home():
         webpage_name = WebSession.get_web_page()
         WebSession.save_session_info(current_user.user_id, session['client_id'], current_user.web_id, webpage_name)
         return render_template('after_login.html')
-    else: # 현재 유저가 등록된 사용자가 아니라면     
-        return render_template('/before_login.html')
+    else: # 현재 유저가 등록된 사용자가 아니라면   
+        print('XXXXXXX')  
+        return render_template('before_login.html')
        
 
 @web_test.route('/sign-in') # 로그인
@@ -25,6 +26,14 @@ def logout():
     # User.delete(current_user.user_id) # 유저 아이디 삭제
     logout_user()
     return render_template('before_login.html')
+
+@web_test.route('/pricing')
+def pricing():
+    return render_template('pricing.html')
+
+@web_test.route('/fairy_list')
+def fairy_list():
+    return render_template('fairy_list.html')
 
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
@@ -39,10 +48,6 @@ def check():
     else:
         error = '유저 정보가 없습니다.'
         return render_template('/sign-in.html', error=error)
-
-@web_test.route('/pricing')
-def pricing():
-    return render_template('pricing.html')
 
 @web_test.route('/api/get_user_info', methods=['GET'])
 def get_user_info():
