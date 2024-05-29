@@ -23,6 +23,7 @@ def sign_in():
 
 @web_test.route('/logout') # 로그아웃
 def logout():
+    session.clear()
     # User.delete(current_user.user_id) # 유저 아이디 삭제
     logout_user()
     return render_template('before_login.html')
@@ -40,8 +41,8 @@ def check():
     error = None
     print('set_id', request.form['web_id'])
     print('set_password', request.form['password'] )
-    # user = User.create(request.form['web_id'], request.form['password'], 'A') # 유저 정보가 없다면 생성
-    user = User.find(request.form['web_id'], request.form['password'])
+    user = User.create(request.form['web_id'], request.form['password'], 'A') # 유저 정보가 없다면 생성
+    # user = User.find(request.form['web_id'], request.form['password'])
     if user:
         login_user(user, remember=True, duration=datetime.timedelta(days=30)) # 세션 정보 할당, 30일 동안 유지
         return redirect('/home')
