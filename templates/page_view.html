@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+        <title>1시경 창작 동화</title>
+        <link rel="stylesheet" href="/static/page_view.css">
+        <script src="https://kit.fontawesome.com/2744511e9f.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <header>
+            <div class="inner">
+              <div class="head-container">
+                <div class="head-brand"><a href="/home">1시경 창작 동화</a></div>
+                <div class="credit-info d-flex ms-auto align-items-center" id="credit-info">
+                  <div class="subscription-info me-3" id="subscription-info">
+                    <span><span id="subscription-amount"></span></span><!--구독정보 표시-->
+                  </div>
+                  <span class="me-3">보유 크레딧: <span id="credit-amount">0</span></span>
+                </div>
+              </div>
+            </div>
+        </header>
+
+        <section>
+            <!-- Previous Button -->
+            <button class="button_left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <!-- Book -->
+            <div id="book" class="book">
+                <!-- Paper 1 -->
+                <div id="p1" class="paper">
+                    <div class="bookcover">
+                        <div id="f1" class="front-content">
+                            <img src="/static/img/동물 친구들과 마법의 왕국.webp" class="cover-image">
+                            <div class="cover-text">
+                                <h1>동물 친구들과 마법의 왕국</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div id="b1" class="back-content">
+                            <img src="/static/img/test-img1.webp" class="main-image">
+                        </div>
+                    </div>
+                </div>
+                <!-- Paper 2 -->
+                <div id="p2" class="paper">
+                    <div class="front">
+                        <div id="f2" class="front-content main-text">
+                            <div class="set-audio">
+                                <i class="fa-solid fa-volume-high" style="font-size: 30px;"></i>
+                                <audio id="audio-player2">
+                                    <source src="/static/audio/combined.wav" type="audio/wav">
+                                </audio>
+                            </div>
+                            <h1>옛날 옛적에, 푸른 숲 속 깊은 곳에 마법의 왕국이 있었습니다. 그곳에는 용감하고 지혜로운 소녀, 엘라가 살고 있었죠. 엘라는 항상 초록색 망토를 두르고 다니며 마법의 힘을 사용해 동물 친구들을 도와주곤 했어요. 하루는 왕국에 큰 위기가 닥쳤습니다. 마법의 성이 어둠의 마법사에게 점령당한 것이었어요. 엘라는 동물 친구들과 함께 성을 되찾기 위해 떠났습니다.</h1>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div id="b2" class="back-content">
+                            <img src="/static/img/test-img2.webp" class="main-image">
+                        </div>
+                    </div>
+                </div>
+                <!-- Paper 3 -->
+                <div id="p3" class="paper">
+                    <div class="front">
+                        <div id="f3" class="front-content main-text">
+                            <div class="set-audio">
+                                <i class="fa-solid fa-volume-high" style="font-size: 30px;"></i>
+                                <audio id="audio-player3">
+                                    <source src="/static/audio/combined2.wav" type="audio/wav">
+                                </audio>
+                            </div>
+                            <h1>엘라는 동물 친구들과 함께 어둠의 마법사와 맞서 싸웠고, 동물 친구들의 특별한 능력 덕분에 마법의 성을 되찾을 수 있었습니다. 왕국은 다시 평화로워졌고, 엘라는 동물 친구들과 함께 행복하게 살았답니다. 그들은 용기와 우정의 힘으로 어려움을 이겨냈고, 이 경험은 모두에게 소중한 추억으로 남았습니다.</h1>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div id="b3" class="back-content">
+                            <img src="/static/img/동물 친구들과 마법의 왕국.webp" class="backimage">
+                        </div>
+                    </div>
+                </div>
+                <!-- paper 4 -->
+                <div id="p4" class="paper">
+                    <div class="front">
+                        <div id="f4" class="front-content main-text backcolor">
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div id="b4" class="back-content">
+                            <img src="/static/img/동물 친구들과 마법의 왕국.webp" class="backimage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <button class="button_right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </section>
+        
+        <script src="/static/js/page_view.js"></script>
+        <script type="text/babel" src="/static/js/fairy_list.js"></script>
+        <script src="/static/js/subscription.js"></script>
+    </body>
+</html>
