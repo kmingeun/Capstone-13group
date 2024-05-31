@@ -36,13 +36,17 @@ def pricing():
 def fairy_list():
     return render_template('fairy_list.html')
 
+@web_test.route('/page_view')
+def page_view():
+    return render_template('page_view.html')
+
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
     error = None
     print('set_id', request.form['web_id'])
     print('set_password', request.form['password'] )
-    user = User.create(request.form['web_id'], request.form['password'], 'A') # 유저 정보가 없다면 생성
-    # user = User.find(request.form['web_id'], request.form['password'])
+    # user = User.create(request.form['web_id'], request.form['password'], 'A') # 유저 정보가 없다면 생성
+    user = User.find(request.form['web_id'], request.form['password'])
     if user:
         login_user(user, remember=True, duration=datetime.timedelta(days=30)) # 세션 정보 할당, 30일 동안 유지
         return redirect('/home')
