@@ -106,28 +106,55 @@
       .moving:hover{
         transform: translate(0, -5px);
       }
+      .custom-background {
+      background-image: url('/static/img/background.png'); /* 배경 이미지 경로 */
+      background-size: cover; /* 배경 이미지 크기 조절 */
+      background-position: center; /* 배경 이미지 위치 조절 */
+      background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+      color: white;
+      }
+      .title-text {
+        font-weight: 900;
+        color: #5a23c8;
+        font-size: 35px;
+      }
+      .headerDiv { 
+      }
+      .bigDiv {
+        display: flex;
+        flex-direction:column;
+      }
+      .btnDiv { 
+        margin-left: 208px;
+      }
+      .list-ikon {
+        margin-left: 300px;
+      }
+      .service-ikon {
+        margin-left: 350px;
+      }
     </style>
 
     
   </head>
     
 <main>
-  <div class="container py-4">
-    <header class="pb-3 mb-4 border-bottom">
+  <div class="container py-4 bigDiv">
+    <header class="pb-3 mb-4 border-bottom headerDiv" >
       <div class="d-flex  text-body-emphasis text-decoration-none">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img"><title>Bootstrap</title><path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z" fill="currentColor"></path></svg>
-        <span class="fs-4">1시경 창작 동화</span>
-        <div class="d-flex justify-content-end" style="width: 67%;">
+        <span class="title-text">Ai SME Story</span>
+        <div class="d-flex justify-content-end btnDiv" style="width: 67%;">
         <button type="button" class="btn btn-outline-dark" onclick="location.href='sign-in'">Sign in</button>
+        <button type="button" class="btn btn-outline-dark" onclick="location.href='sign-in'">Sign up</button>
       </div>
     </div>
     </header>
 
-    <div class="p-5 mb-4 bg-body-tertiary rounded-3 custom-box-shadow moving">
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3 custom-box-shadow moving custom-background">
       <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">동화 샘플</h1>
         <p class="col-md-8 fs-4">동화 생성 및 낭독 서비스의 결과물을 체험해보세요!</p>
-        <button class="btn btn-primary btn-lg" type="button">샘플보기</button>
+        <button style="font-weight: 900; background-color: #4718a7; border-color: #4718a7;" class="btn btn-primary btn-lg" type="button">샘플보기</button>
       </div>
     </div>
 
@@ -136,14 +163,20 @@
         <div class="h-100 p-5 text-bg-dark rounded-3 custom-box-shadow moving">
           <h2>동화 리스트</h2>
           <p>생성된 동화가 저장됩니다. 구독을 통해 더 많은 자신만의 동화를 만들고 저장해 보세요!</p>
-          <button class="btn btn-outline-light" type="button">리스트 보려가기</button>
+          <button class="btn btn-outline-light" type="button" onclick="alertAndRedirect()">리스트 보려가기</button>
+          <span>
+            <img src="/static/img/tech_icon-4.png" class="list-ikon">
+          </span>
         </div>
       </div>
       <div class="col-md-6">
         <div class="h-100 p-5 bg-body-tertiary border rounded-3 custom-box-shadow moving">
           <h2>구독하기</h2>
-          <p>구독을 통해 자유롭게 자신만의 동활를 생성해 보세요!</p>
-          <button class="btn btn-outline-secondary" type="button">구독</button>
+          <p>부모님의 목소리로 동화 읽어주기, 전자책 낭독서비스 등 멤버쉽에 가입하여 원하는 동화책을 만들어보세요.</p>
+          <button class="btn btn-outline-secondary" type="button" onclick="alertAndRedirect()">구독</button>
+          <span>
+            <img src="/static/img/tech_icon-2.png" class="service-ikon">
+          </span>
         </div>
       </div>
     </div>
@@ -151,43 +184,34 @@
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
         <div class="col-12 col-md">
-          <img class="mb-2" src="/static/brand/bootstrap-logo.svg" alt="" width="24" height="19">
-          <small class="d-block mb-3 text-body-secondary">&copy; 2017–2024</small>
+          <div>Ai SME Story</div>
+          <small class="d-block mb-3 text-body-secondary">&copy; 2024</small>
         </div>
         <div class="col-6 col-md">
           <h5>서비스 소개</h5>
-          <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
-          </ul>
         </div>
         <div class="col-6 col-md">
-          <h5>Resources</h5>
-          <ul class="list-unstyled text-small">
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
-          </ul>
+          <h5>자주하는 질문</h5>
         </div>
         <div class="col-6 col-md">
           <h5>About</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">팀</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
-            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">위치</a></li>
           </ul>
         </div>
       </div>
     </footer>
   </div>
 </main>
+
 <script src="/static/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function alertAndRedirect() {
+        alert('로그인을 해주세요');
+        window.location.href = 'sign-in';
+      }
+</script>
 
     </body>
 </html>
