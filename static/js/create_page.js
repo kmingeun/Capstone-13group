@@ -69,4 +69,3 @@ $(function(){
     $('.class-title_3').text(title);
     });
   });
-  
