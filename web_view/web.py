@@ -3,6 +3,7 @@ from flask_login import login_user, current_user, logout_user
 from web_control.user_mgmt import User
 from web_control.session_mgmt import WebSession
 import datetime
+import os
 
 web_test = Blueprint('home', __name__)
 
@@ -38,7 +39,13 @@ def fairy_list():
 
 @web_test.route('/page_view')
 def page_view():
-    return render_template('page_view.html')
+    web_id = current_user.web_id
+    return render_template('page_view.html', web_id=web_id)
+
+@web_test.route('/dynamic_page_view')
+def dynamic_page_view():
+    web_id = current_user.web_id
+    return render_template('dynamic_page_view.html', web_id=web_id)
 
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
@@ -101,3 +108,17 @@ def update_subscription():
     User.update_subscribe(web_id, subscription)
 
     return jsonify({'success': True})
+
+@web_test.route('api/image_setting/<folder_name>')
+def image_setting(folder_name):
+    folder_path = os.path.join(os.getcwd(), 'static', folder_name)
+    
+    if not os.path.exists(folder_path):
+        return jsonify({"error": "Folder not found"}), 404
+
+    image_files = [f for f in os.listdir(folder_path) if f.endswith('.png')]
+    image_files.sort()
+    image_paths = [os.path.join('static', folder_name, img) for img in image_files]
+    print(image_paths)
+
+    return jsonify(image_paths=image_paths)
