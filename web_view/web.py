@@ -65,7 +65,6 @@ def create_page():
     return render_template('create_page.html', web_id=web_id)
 
 
-
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
     error = None
