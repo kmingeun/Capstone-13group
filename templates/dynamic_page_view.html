@@ -148,6 +148,31 @@
                     }
                 });
             });
+
+            // 음성 파일 경로를 가져오는 AJAX 호출
+            $.ajax({
+                url: '/home/api/audio_setting/' + web_id, // 음성 파일 경로를 가져오는 API 엔드포인트
+                type: 'GET',
+                success: function(response) {
+                    const audioPaths = response.audio_paths;
+                    const baseUrl = window.location.origin;
+
+                    const audioElements = ['#audio-player2', '#audio-player3'];
+
+                    audioElements.forEach((selector, index) => {
+                        if (audioPaths[index]) {
+                            const fixedPath = baseUrl + '/' + audioPaths[index].replace(/\\/g, '/');
+                            console.log(fixedPath);
+
+                            $(selector).find('source').attr('src', fixedPath);
+                            $(selector)[0].load(); // 새로운 소스를 설정한 후 오디오 요소를 다시 로드합니다.
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching audio files:", error);
+                }
+            });
         </script>
     </body>
 </html>

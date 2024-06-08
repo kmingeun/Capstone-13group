@@ -126,17 +126,3 @@ def update_subscription():
     User.update_subscribe(web_id, subscription)
 
     return jsonify({'success': True})
-
-@web_test.route('api/image_setting/<folder_name>')
-def image_setting(folder_name):
-    folder_path = os.path.join(os.getcwd(), 'static', folder_name)
-    
-    if not os.path.exists(folder_path):
-        return jsonify({"error": "Folder not found"}), 404
-
-    image_files = [f for f in os.listdir(folder_path) if f.endswith('.png')]
-    image_files.sort()
-    image_paths = [os.path.join('static', folder_name, img) for img in image_files]
-    print(image_paths)
-
-    return jsonify(image_paths=image_paths)
