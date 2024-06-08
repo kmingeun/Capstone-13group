@@ -5,167 +5,178 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
         <title>1시경 창작 동화</title>
         <link rel="stylesheet" href="/static/create_page.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="https://kit.fontawesome.com/2744511e9f.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
     </head>
 
     <body>
-        <header>
-            <div class="inner">
-              <div class="head-container">
-                <div class="head-brand"><a href="/home">1시경 창작 동화</a></div>
-                <div class="credit-info d-flex ms-auto align-items-center" id="credit-info">
-                  <div class="subscription-info me-3" id="subscription-info">
-                    <span><span id="subscription-amount"></span></span><!--구독정보 표시-->
-                  </div>
-                  <span class="me-3">보유 크레딧: <span id="credit-amount">0</span></span>
-                </div>
-              </div>
-            </div>
-        </header>
-
-        <section class="main">
-          <div class="main-container">
-            <div class="inner">
-              <div class="title-container">
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section>
+      <header>
           <div class="inner">
-            <ul class="select-category" data-position="0">
-              <li class="class-card">
-                <img src="/static/img/백경1.png" class="class-image" />
-                  <div class="class-container">
-                    <div class="class-desc">
-                      <div class="class-title">주인공</div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="class-card">
-                <img src="/static/img/백경2.png" class="class-image" />
-                  <div class="class-container">
-                    <div class="class-desc">
-                      <div class="class-title">장르?</div>
-                    </div>
-                  </div>
-                </a>
-              </li>
-                <li class="class-card">
-                  <img src="/static/img/백경3.png" class="class-image" />
-                    <div class="class-container">
-                      <div class="class-desc">
-                        <div class="class-title">배경?</div>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+            <div class="head-container">
+              <div class="head-brand"><a href="/home">1시경 창작 동화</a></div>
+              <div class="credit-info d-flex ms-auto align-items-center" id="credit-info">
+                <div class="subscription-info me-3" id="subscription-info">
+                  <span><span id="subscription-amount"></span></span><!--구독정보 표시-->
+                </div>
+                <span class="me-3">보유 크레딧: <span id="credit-amount">0</span></span>
               </div>
             </div>
           </div>
-        </section>
-        
-        <button class="button_left">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
+      </header>
 
+      <section class="main">
+        <div class="main-container">
+          <div class="inner">
+            <div class="title-container">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <div class="inner">
-          <section class="carousel">
-            <div class="carousel-inner" style="background-color: red;">
-                <div class="carousel-item" data-index="0">
-                    <ul class="select-list">
-                        <li class="select-card">
-                            <img src="/static/img/소녀와 마법의 숲.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공1</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="select-card">
-                            <img src="/static/img/마법의 책과 신비한 성.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공2</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="select-card">
-                            <img src="/static/img/동물 친구들과 마법의 왕국.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공3</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="select-card">
-                            <img src="/static/img/작은 인어와 바다의 보물.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공4</div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul class="select-list">
-                        <li class="select-card">
-                            <img src="/static/img/시간 여행자와 역사 속 친구들.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공5</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="select-card">
-                            <img src="/static/img/마법의 나무와 소녀의 동물 친구들.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공6</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="select-card">
-                            <img src="/static/img/정글의 보물과 용감한 모험가들.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공7</div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="select-card">
-                            <img src="/static/img/마법 양탄자와 하늘을 나는 모험.webp" class="select-image" />
-                            <div class="class-container">
-                                <div class="class-desc">
-                                    <div class="class-title">주인공8</div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+          <ul class="select-category" data-position="0">
+            <li class="class-card">
+              <img src="/static/img/백경1.png" class="class-image" id="first" />
+              <div class="class-container">
+                <div class="class-desc">
+                  <div class="class-title_1">주인공</div>
                 </div>
-                <!-- Add more carousel-items here as needed -->
-            </div>
-        </section>
-      </div>
-    
-      <button class="button_left">
-          <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button class="button_right">
-          <i class="fa-solid fa-chevron-right"></i>
-      </button>
-
-        <button class="button_right">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-
-        <footer>
-          <div class="inner">
-            <div class="footer-container"></div>
+              </div>
+            </li>
+            <li class="class-card">
+              <img src="/static/img/백경2.png" class="class-image" id="second"/>
+              <div class="class-container">
+                <div class="class-desc">
+                  <div class="class-title_2">장르?</div>
+                </div>
+              </div>
+            </li>
+              <li class="class-card">
+                <img src="/static/img/백경1.png" class="class-image" id="third"/>
+                <div class="class-container">
+                  <div class="class-desc">
+                    <div class="class-title_3">배경?</div>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
-        </footer>
+      </section>
+
+
+      <section>
+        <div class="inner">
+          <div id="slider-div">
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경1></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경2></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경3></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경4></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경5></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경6></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경7></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_1">
+              <div class="select-title_1"><백경8></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경9></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경10></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경11></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경12></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경13></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경14></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경15></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_2">
+              <div class="select-title_2"><백경16></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경17></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경18></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경19></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경20></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경21></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경22></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경23></div>
+            </div>
+            <div class="select-container">
+              <img src="/static/img/백경3.png" class="select-image_3">
+              <div class="select-title_3"><백경24></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="inner">
+          <div class="footer-container"></div>
+
+        </div>
+      </footer>
 
         <script type="text/babel" src="/static/js/fairy_list.js"></script>
         <script src="/static/js/subscription.js"></script>
