@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ko" data-bs-theme="auto">
+  <head><script src="/static/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    
+    <title>1시경 창작 동화</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/jumbotron/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet">.
+    <link rel="stylesheet" href="/static/parallax.css">
+    <link rel="stylesheet" href="/static/dracula.css">
+    <link href="https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+
+      .custom-box-shadow{
+        box-shadow: 10px 5px 10px rgba(25, 42, 70, 0.2);
+      }
+
+      .moving{
+        transition: 0.4s;
+      }
+
+      .moving:hover{
+        transform: translate(0, -5px);
+      }
+
+      .font{
+        font-weight: 540;
+        font-size: 16px;
+      }
+      .title-text {
+        font-weight: 900;
+        color: #5a23c8;
+        font-size: 35px;
+      }
+
+      .btn-primary{
+        --bs-btn-color:#fff;--bs-btn-bg:#0d6efd;--bs-btn-border-color:#0d6efd;--bs-btn-hover-color:#fff;--bs-btn-hover-bg:#0b5ed7;--bs-btn-hover-border-color:#0a58ca;--bs-btn-focus-shadow-rgb:49,132,253;--bs-btn-active-color:#fff;--bs-btn-active-bg:#0a58ca;--bs-btn-active-border-color:#0a53be;--bs-btn-active-shadow:inset 0 3px 5px rgba(0, 0, 0, 0.125);--bs-btn-disabled-color:#fff;--bs-btn-disabled-bg:#0d6efd;--bs-btn-disabled-border-color:#0d6efd
+      }
+
+      .custom-background {
+      background-image: url('/static/img/background.png'); /* 배경 이미지 경로 */
+      background-size: cover; /* 배경 이미지 크기 조절 */
+      background-position: center; /* 배경 이미지 위치 조절 */
+      background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+      color: white;
+      }
+      .list-ikon {
+        margin-left: 300px;
+      }
+      .service-ikon {
+        margin-left: 350px;
+      }
+      .big1 { 
+        display: flex;
+      }
+      .textDiv { 
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+      .title-text3 {
+        font-size: 30px;
+        font-weight: 900;
+      }
+        /* parallax__cont */
+        #parallax__cont {
+            max-width: 1600px;
+            width: 98%;
+            margin: 0 auto;
+            /* background-color: rgba(255,255,255,0.1); */
+        }
+        .content__item {
+            width: 1000px;
+            max-width: 70vw;
+            margin: 30vw auto;
+            /* background-color: rgba(255,255,255,0.3); */
+            text-align: left;
+            margin-right: 0;
+            position: relative;
+            padding-top: 7vw;
+        }
+        /* even(짝수), 2n, 2n+1, 2n*8 등 입력 가능 */
+        .content__item:nth-child(even){
+            margin-left: 0;
+            text-align: right;
+        }
+        .content__item__num {
+            font-size: 35vw;
+            font-family: 'Lato';
+            font-weight: 100;
+            position: absolute;
+            left: -5vw;
+            top: -16vw;
+            opacity: 0.07;
+            z-index: -2;
+        }
+        .content__item:nth-child(even) .content__item__num {
+            /* left값 초기화 후 right 값 설정 */
+            left: auto;
+            right: -5vw;
+        }
+        .content__item__title {
+            font-weight: 400;
+            text-transform: capitalize;
+        }
+        .content__item__imgWrap { 
+          /* 네모난 사진 css */
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .content__item__img {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            background: url(../assets/img/effect_bg01-min.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            left: -5%;
+            top: -5%;
+            transition: all 1s;
+        }
+        .content__item:nth-child(1) .content__item__img {
+            background-image: url(/static/img/동물\ 친구들과\ 마법의\ 왕국.webp);
+        }
+        .content__item:nth-child(2) .content__item__img {
+            background-image: url(/static/img/마법\ 양탄자와\ 하늘을\ 나는\ 모험.webp);
+        }
+        .content__item:nth-child(3) .content__item__img {
+            background-image: url(/static/img/마법의\ 나무와\ 소녀의\ 동물\ 친구들.webp);
+        }
+        .content__item:nth-child(4) .content__item__img {
+            background-image: url(/static/img/마법의\ 숲에서\ 유니콘과\ 소녀의\ 모험.webp);
+        }
+        .content__item:nth-child(5) .content__item__img {
+            background-image: url(/static/img/마법의\ 책과\ 신비한\ 성.webp);
+        }
+        .content__item:nth-child(6) .content__item__img {
+            background-image: url(/static/img/마법의\ 천체망원경과\ 별빛\ 모험.webp);
+        }
+        .content__item:nth-child(7) .content__item__img {
+            background-image: url(/static/img/소녀와\ 마법의\ 숲.webp);
+        }
+        .content__item:nth-child(8) .content__item__img {
+            background-image: url(/static/img/시간\ 여행자와\ 역사\ 속\ 친구들.webp);
+        }
+        .content__item:nth-child(9) .content__item__img {
+            background-image: url(/static/img/얼음\ 성과\ 눈의\ 왕국\ 모험.webp);
+        }
+        .content__item__desc {
+            font-size: 4vw;
+            line-height: 1.4;
+            margin-top: -5vw;
+            margin-left: -4vw;
+            word-break: keep-all;
+        }
+        .content__item:nth-child(even) .content__item__desc {
+            margin-left: auto;
+            margin-right: -4vw;
+        }
+
+        @media (max-width: 800px) {
+            #parallax__cont {
+                margin-top: 70vw;
+            }
+            #parallax__nav {
+                padding: 10px;
+                right: auto;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 5px;
+                background-color: rgba(0,0,0,0.8);
+            }
+            #parallax__nav li {
+                display: block;
+                margin: 5px;
+            }
+            #parallax__nav li a {
+                font-size: 14px;
+                padding: 5px;
+                border-radius: 5px;
+                height: auto;
+                line-height: 1;
+            }
+            #parallax__nav li.active a {
+                border-radius: 5px;
+            }
+        }
+
+        /* 한번에 나타나기 */
+        /* #contents > section { 
+            opacity: 0;
+            transition:  all 1s;
+        }
+        #contents > section.show {
+            opacity: 1;
+        } */
+
+        /* 개별적으로 나타나기 */
+        #contents > section .content__item__num {
+            opacity: 0;
+            transform: translateY(200px);
+            transition: all 1s 0.1s cubic-bezier(0, 0.5, 0.23, 1.02);
+        }
+        #contents > section .content__item__title {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 1s 0.3s cubic-bezier(0.24, 0.43, 0.3, 0.76);
+        }
+        #contents > section .content__item__imgWrap {
+            opacity: 0;
+            transform: translateY(200px) rotate(30deg) skew(20deg);
+            transition: all 1s 0.6s cubic-bezier(0, 0.5, 0.23, 1.02);
+        }
+        #contents > section .content__item__desc {
+            opacity: 0;
+            transform: translateX(-200px);
+            transition: all 1s 0.9s cubic-bezier(0, 0.5, 0.23, 1.02);
+        }
+
+        #contents > section.show .content__item__num {
+            opacity: 0.07;
+            transform: translateY(0);
+        }
+        #contents > section.show .content__item__title {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        #contents > section.show .content__item__imgWrap {
+            opacity: 1;
+            transform: translateY(0) rotate(0) skew(0);
+        }
+        #contents > section.show .content__item__desc {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        #contents > section:nth-child(even) .content__item__title {
+            transform: translateX(100px);
+        }
+        #contents > section:nth-child(even).show .content__item__title {
+            transform: translateX(0);
+        }
+        #contents > section:nth-child(even) .content__item__desc {
+            transform: translateX(-200px);
+        }
+        #contents > section:nth-child(even).show .content__item__desc {
+            transform: translateX(0);
+        }
+    </style>
+    
+  </head>
+  <body>  
+      <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom">
+          <div class="d-flex align-items-center text-body-emphasis text-decoration-none">
+            <span class="title-text">Ai SME Story</span>
+            <div class="credit-info d-flex ms-auto align-items-center" id="credit-info">
+              <div class="subscription-info me-3" id="subscription-info">
+                <span><span id="subscription-amount"></span></span><!--구독정보 표시-->
+              </div>
+              <span onclick="location.href='service_intro'">서비스 소개</span>
+              <span>ㅣ</span>
+              <span>나의 동화책</span>
+              <span>ㅣ</span>
+              <span class="me-3 font">보유 크레딧: <span id="credit-amount">0</span></span>
+              <button type="button" class="btn btn-outline-dark font" onclick="location.href='/home/logout'">logout</button>
+            </div>
+          </div>
+        </header>
+        </div>
+        <main id="parallax__cont">
+          <div id="contents">
+              <section id="section1" class="content__item">
+                  <span class="content__item__num">01</span>
+                  <h2 class="content__item__title">section1</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section1 -->
+  
+              <section id="section2" class="content__item">
+                  <span class="content__item__num">02</span>
+                  <h2 class="content__item__title">section2</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section2 -->
+  
+              <section id="section3" class="content__item">
+                  <span class="content__item__num">03</span>
+                  <h2 class="content__item__title">section3</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section3 -->
+  
+              <section id="section4" class="content__item">
+                  <span class="content__item__num">04</span>
+                  <h2 class="content__item__title">section4</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section4 -->
+  
+              <section id="section5" class="content__item">
+                  <span class="content__item__num">05</span>
+                  <h2 class="content__item__title">section5</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section5 -->
+  
+              <section id="section6" class="content__item">
+                  <span class="content__item__num">06</span>
+                  <h2 class="content__item__title">section6</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section6 -->
+  
+              <section id="section7" class="content__item">
+                  <span class="content__item__num">07</span>
+                  <h2 class="content__item__title">section7</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section7 -->
+  
+              <section id="section8" class="content__item">
+                  <span class="content__item__num">08</span>
+                  <h2 class="content__item__title">section8</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section8 -->
+  
+              <section id="section9" class="content__item">
+                  <span class="content__item__num">09</span>
+                  <h2 class="content__item__title">section9</h2>
+                  <figure class="content__item__imgWrap">
+                      <div class="content__item__img"></div>
+                  </figure>
+                  <p class="content__item__desc">서비스 소개글 작성</p>
+              </section>
+              <!-- //section9 -->
+          </div>
+      </main>
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <div>Ai SME Story</div>
+        <small class="d-block mb-3 text-body-secondary">&copy; 2024</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>서비스 소개</h5>
+      </div>
+      <div class="col-6 col-md">
+        <h5>자주하는 질문</h5>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">팀</a></li>
+          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">위치</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+      </div>
+    <script src="/static/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/subscription.js "></script>
+  </body>
+</html>
+
+<script>
+    // 리소스 계속 만들어서 사이트 느려질 수 있음
+    // window.addEventListener("scroll", scrollProgress);
+
+
+    // 재귀함수(자기 자신을 또 실행시켜 줌)
+    function scroll(){
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || window.screenY;
+
+        document.querySelectorAll(".content__item").forEach(item => {
+            // 올라오는 속도 조절을 위해 %2
+            if(scrollTop > item.offsetTop - window.innerHeight/2){
+                item.classList.add("show");
+            }
+        });
+
+        // 1분에 60번 실행
+        // 브라우저에 최적화 부드럽게, 메모리 훨씬 더 적게 차지
+        requestAnimationFrame(scroll);
+    }
+    scroll();
+</script>
