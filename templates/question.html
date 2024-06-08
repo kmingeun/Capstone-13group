@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ko" data-bs-theme="auto">
+  <head>
+    <script src="/static/js/color-modes.js"></script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.122.0" />
+
+    <title>1시경 창작 동화</title>
+
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/jumbotron/"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
+
+    <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+
+      .custom-box-shadow {
+        box-shadow: 10px 5px 10px rgba(25, 42, 70, 0.2);
+      }
+
+      .moving {
+        transition: 0.4s;
+      }
+
+      .moving:hover {
+        transform: translate(0, -5px);
+      }
+
+      .font {
+        font-weight: 540;
+        font-size: 16px;
+      }
+      .title-text {
+        font-weight: 900;
+        color: #5a23c8;
+        font-size: 35px;
+      }
+
+      .btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #0d6efd;
+        --bs-btn-border-color: #0d6efd;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #0b5ed7;
+        --bs-btn-hover-border-color: #0a58ca;
+        --bs-btn-focus-shadow-rgb: 49, 132, 253;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #0a58ca;
+        --bs-btn-active-border-color: #0a53be;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #0d6efd;
+        --bs-btn-disabled-border-color: #0d6efd;
+      }
+
+      .custom-background {
+        background-image: url("/static/img/background.png"); /* 배경 이미지 경로 */
+        background-size: cover; /* 배경 이미지 크기 조절 */
+        background-position: center; /* 배경 이미지 위치 조절 */
+        background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+        color: white;
+      }
+      .list-ikon {
+        margin-left: 300px;
+      }
+      .service-ikon {
+        margin-left: 350px;
+      }
+      #Qpic {
+        margin-right: 25px;
+      }
+      .accordion-button {
+        font-size: 17px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="container py-4">
+        <header class="pb-3 mb-4 border-bottom">
+          <div
+            class="d-flex align-items-center text-body-emphasis text-decoration-none"
+          >
+            <span class="title-text">Ai SME Story</span>
+            <div
+              class="credit-info d-flex ms-auto align-items-center"
+              id="credit-info"
+            >
+              <div class="subscription-info me-3" id="subscription-info">
+                <span><span id="subscription-amount"></span></span
+                ><!--구독정보 표시-->
+              </div>
+              <span
+                style="cursor: pointer"
+                onclick="location.href='service_intro'"
+                >서비스 소개</span
+              >
+              <span>ㅣ</span>
+              <span>나의 동화책</span>
+              <span>ㅣ</span>
+              <span class="me-3 font"
+                >보유 크레딧: <span id="credit-amount">0</span></span
+              >
+              <button
+                type="button"
+                class="btn btn-outline-dark font"
+                onclick="location.href='/home/logout'"
+              >
+                logout
+              </button>
+            </div>
+          </div>
+        </header>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseOne"
+                aria-expanded="false"
+                aria-controls="flush-collapseOne"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="fill:#5a23c8"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-quora"
+                  id="Qpic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
+                  />
+                </svg>
+                Ai SME Story는 무엇인가요?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseOne"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Placeholder content for this accordion, which is intended to
+                demonstrate the <code>.accordion-flush</code> class. This is the
+                first item's accordion body.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseTwo"
+                aria-expanded="false"
+                aria-controls="flush-collapseTwo"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="fill: #5a23c8"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-quora"
+                  id="Qpic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
+                  />
+                </svg>
+                크레딧은 무엇인가요?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseTwo"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Placeholder content for this accordion, which is intended to
+                demonstrate the <code>.accordion-flush</code> class. This is the
+                second item's accordion body. Let's imagine this being filled
+                with some actual content.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="fill: #5a23c8"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-quora"
+                  id="Qpic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
+                  />
+                </svg>
+                Ai SME Story는 어떻게 활용하나요?
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Placeholder content for this accordion, which is intended to
+                demonstrate the <code>.accordion-flush</code> class. This is the
+                third item's accordion body. Nothing more exciting happening
+                here in terms of content, but just filling up the space to make
+                it look, at least at first glance, a bit more representative of
+                how this would look in a real-world application.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapsefour"
+                aria-expanded="false"
+                aria-controls="flush-collapsefour"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="fill: #5a23c8"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-quora"
+                  id="Qpic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
+                  />
+                </svg>
+                동화책 생성은 어떤 순서로 진행해야 하나요?
+              </button>
+            </h2>
+            <div
+              id="flush-collapsefour"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Placeholder content for this accordion, which is intended to
+                demonstrate the <code>.accordion-flush</code> class. This is the
+                third item's accordion body. Nothing more exciting happening
+                here in terms of content, but just filling up the space to make
+                it look, at least at first glance, a bit more representative of
+                how this would look in a real-world application.
+              </div>
+            </div>
+          </div>
+          <!---->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapsefive"
+                aria-expanded="false"
+                aria-controls="flush-collapsefive"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="fill: #5a23c8"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-quora"
+                  id="Qpic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
+                  />
+                </svg>
+                AI 그림 생성이 궁금해요.
+              </button>
+            </h2>
+            <div
+              id="flush-collapsefive"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Placeholder content for this accordion, which is intended to
+                demonstrate the <code>.accordion-flush</code> class. This is the
+                third item's accordion body. Nothing more exciting happening
+                here in terms of content, but just filling up the space to make
+                it look, at least at first glance, a bit more representative of
+                how this would look in a real-world application.
+              </div>
+            </div>
+          </div>
+          <!---->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#flush-collapsesix"
+                aria-expanded="false"
+                aria-controls="flush-collapsesix"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="fill: #5a23c8"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-quora"
+                  id="Qpic"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
+                  /></svg>
+                Ai SME Story 사용가능 연령대를 알고싶어요.
+              </button>
+            </h2>
+            <div
+              id="flush-collapsesix"
+              class="accordion-collapse collapse"
+              data-bs-parent="#accordionFlushExample"
+            >
+              <div class="accordion-body">
+                Placeholder content for this accordion, which is intended to
+                demonstrate the <code>.accordion-flush</code> class. This is the
+                third item's accordion body. Nothing more exciting happening
+                here in terms of content, but just filling up the space to make
+                it look, at least at first glance, a bit more representative of
+                how this would look in a real-world application.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+          <div class="row">
+            <div class="col-12 col-md">
+              <div>Ai SME Story</div>
+              <small class="d-block mb-3 text-body-secondary"
+                >&copy; 2024</small
+              >
+            </div>
+            <div class="col-6 col-md">
+              <h5
+                onclick="location.href='service_intro'"
+                style="cursor: pointer"
+              >
+                서비스 소개
+              </h5>
+            </div>
+            <div class="col-6 col-md">
+              <h5>자주하는 질문</h5>
+            </div>
+            <div class="col-6 col-md">
+              <h5>About</h5>
+              <ul class="list-unstyled text-small">
+                <li class="mb-1">
+                  <a class="link-secondary text-decoration-none" href="#">팀</a>
+                </li>
+                <li class="mb-1">
+                  <a class="link-secondary text-decoration-none" href="#"
+                    >위치</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </main>
+    <script src="/static/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/subscription.js "></script>
+  </body>
+</html>
