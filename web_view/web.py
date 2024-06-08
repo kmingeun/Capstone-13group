@@ -42,10 +42,18 @@ def page_view():
     web_id = current_user.web_id
     return render_template('page_view.html', web_id=web_id)
 
+@web_test.route('/before_page_view')
+def before_page_view():
+    return render_template('page_view.html')
+
 @web_test.route('/dynamic_page_view')
 def dynamic_page_view():
     web_id = current_user.web_id
     return render_template('dynamic_page_view.html', web_id=web_id)
+
+@web_test.route('/create_page')
+def create_page():
+    return render_template('create_page.html')
 
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
@@ -122,3 +130,17 @@ def image_setting(folder_name):
     print(image_paths)
 
     return jsonify(image_paths=image_paths)
+
+@web_test.route('/api/audio_setting/<folder_name>')
+def audio_setting(folder_name):
+    folder_path = os.path.join(os.getcwd(), 'static', folder_name)
+    
+    if not os.path.exists(folder_path):
+        return jsonify({"error": "Folder not found"}), 404
+
+    audio_files = [f for f in os.listdir(folder_path) if f.endswith('.wav')]
+    audio_files.sort()
+    audio_paths = [os.path.join('static', folder_name, audio) for audio in audio_files]
+    print(audio_paths)
+
+    return jsonify(audio_paths=audio_paths)

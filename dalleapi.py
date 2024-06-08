@@ -2,9 +2,9 @@ import openai
 import requests
 import os
 
-def gen(prompt):
+def gen(prompt, folder_name1):
 
-    folder_name = os.path.join('static', 'user_abc123')
+    folder_name = os.path.join('static', folder_name1)
 
         # 폴더가 없으면 생성
     if not os.path.exists(folder_name):
@@ -33,4 +33,4 @@ def gen(prompt):
     else:
         print("Failed to download image")
 
-gen("화내는 고양이")
+gen("화내는 고양이",  "user_abc123")
