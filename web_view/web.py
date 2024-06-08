@@ -48,6 +48,7 @@ def question():
 @web_test.route('/sign_up')
 def sign_up():
     return render_template('sign_up.html')
+
 @web_test.route('/page_view')
 def page_view():
     web_id = current_user.web_id
@@ -57,6 +58,13 @@ def page_view():
 def dynamic_page_view():
     web_id = current_user.web_id
     return render_template('dynamic_page_view.html', web_id=web_id)
+
+@web_test.route('/create_page')
+def create_page():
+    web_id = current_user.web_id
+    return render_template('create_page.html', web_id=web_id)
+
+
 
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
