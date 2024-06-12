@@ -4,8 +4,13 @@ from web_control.user_mgmt import User
 from web_control.session_mgmt import WebSession
 import datetime
 import os
+from textmodel import create_story
+from dalleapi import gen
+import re
 
 web_test = Blueprint('home', __name__)
+
+stored_data = {}
 
 @web_test.route('/') # 홈
 def home():
@@ -24,10 +29,17 @@ def sign_in():
 
 @web_test.route('/logout') # 로그아웃
 def logout():
-    session.clear()
     # User.delete(current_user.user_id) # 유저 아이디 삭제
     logout_user()
-    return render_template('before_login.html')
+    return render_template('/before_login.html')
+
+@web_test.route('/service_intro')
+def service_intro():
+    return render_template('service_intro.html')
+
+@web_test.route('/question')
+def question():
+    return render_template('question.html')
 
 @web_test.route('/pricing')
 def pricing():
@@ -37,14 +49,14 @@ def pricing():
 def fairy_list():
     return render_template('fairy_list.html')
 
+@web_test.route('/before_page_view')
+def before_page_view():
+    return render_template('page_view.html')
+
 @web_test.route('/page_view')
 def page_view():
     web_id = current_user.web_id
     return render_template('page_view.html', web_id=web_id)
-
-@web_test.route('/before_page_view')
-def before_page_view():
-    return render_template('page_view.html')
 
 @web_test.route('/dynamic_page_view')
 def dynamic_page_view():
@@ -123,7 +135,6 @@ def image_setting(folder_name):
     
     if not os.path.exists(folder_path):
         return jsonify({"error": "Folder not found"}), 404
-
     image_files = [f for f in os.listdir(folder_path) if f.endswith('.png')]
     image_files.sort()
     image_paths = [os.path.join('static', folder_name, img) for img in image_files]
@@ -134,7 +145,7 @@ def image_setting(folder_name):
 @web_test.route('/api/audio_setting/<folder_name>')
 def audio_setting(folder_name):
     folder_path = os.path.join(os.getcwd(), 'static', folder_name)
-    
+
     if not os.path.exists(folder_path):
         return jsonify({"error": "Folder not found"}), 404
 
@@ -144,3 +155,99 @@ def audio_setting(folder_name):
     print(audio_paths)
 
     return jsonify(audio_paths=audio_paths)
+
+@web_test.route('/api/sendcreateInfo',  methods=['POST'])
+def send_create_info():
+    data = request.json
+    web_id = current_user.web_id
+
+    # 기본 경로 설정
+    base_path = "C:/Users/ens95/Desktop/Capstone-13group/static" 
+    user_path = os.path.join(base_path, f'user_{web_id}')
+
+    # 유저 폴더 생성
+    if not os.path.exists(user_path):
+        os.makedirs(user_path)
+
+    # 폴더 선택에 따라 다른 폴더 생성
+    if data.get('dalle') == 'add-img' and data.get('audio') in ['audio-base', 'audio-fem']:
+        base_folder_name = 'story_a'
+    elif data.get('dalle') == 'add-img':
+        base_folder_name = 'story_i'
+    else:
+        base_folder_name = 'story_t'
+
+    # 인덱스를 붙여 폴더 생성
+    index = 1
+    while True:
+        folder_name = f"{base_folder_name}{index}"
+        story_path = os.path.join(user_path, folder_name)
+        if not os.path.exists(story_path):
+            os.makedirs(story_path)
+            break
+        index += 1
+
+    story_path = story_path.replace("\\", "/")
+    return jsonify({"status": "success", "message": "Folders created successfully.",  "folder_path": story_path})
+
+@web_test.route('/api/generateText',  methods=['POST'])
+def generateText():
+    # 저장된 데이터 가져오기
+    data = request.json
+    first = data.get('first', {})
+    second = data.get('second', {})
+    third = data.get('third', {})
+
+    story = create_story(first, second, third)
+    print(story)
+
+    # 폴더 경로를 쿼리 매개변수로 받음
+    folder_path = data.get('folder_path')
+    print(folder_path)
+    if not folder_path:
+        return jsonify({"status": "error", "message": "Folder path not provided."}), 400
+    
+    # 파일에 텍스트 저장
+    try:
+        with open(os.path.join(folder_path, 'story.txt'), 'w', encoding='utf-8') as file:
+            file.write(story)
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+    return jsonify({"status": "success", "generatedStory": story})
+
+@web_test.route('/api/generateImage', methods=['POST'])
+def generateImage():
+    data = request.json
+    folder_path = data.get('folder_path')
+
+    if not folder_path:
+        return jsonify({"status": "error", "message": "Folder path not provided."}), 400
+
+    story_path = os.path.join(folder_path, 'story.txt')
+    if not os.path.exists(story_path):
+        return jsonify({"status": "error", "message": "Story file not found."}), 404
+
+    try:
+        with open(story_path, 'r', encoding='utf-8') as file:
+            text = file.read()
+
+        # 문장을 온점('.')을 기준으로 분할
+        sentences = re.split(r'(?<=[.!?]) +', text)
+        print(sentences)
+        
+        image_paths = []
+        for idx in range(0, len(sentences), 2):
+            # 2문장씩 묶기
+            combined_sentence = ' '.join(sentences[idx:idx+2]).strip()
+            if combined_sentence:
+                image_bytes = gen(combined_sentence)
+                image_path = os.path.join(folder_path, f'image_{(idx // 2) + 1}.png')
+                with open(image_path, 'wb') as img_file:
+                    img_file.write(image_bytes)
+
+                image_paths.append(image_path.replace("\\", "/"))
+
+        return jsonify({"status": "success", "imagePaths": image_paths})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500

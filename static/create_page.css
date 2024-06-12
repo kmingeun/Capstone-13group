@@ -333,7 +333,6 @@ i {
 .footer-container {
   width: 100%;
   height: 100px;
-  border-top: 2px solid rgb(87, 136, 209);
 }
 
 li a:hover {
@@ -346,6 +345,140 @@ ul li img:hover {
 
 ul li img:active {
   cursor: grabbing;
+}
+
+.btn-layout {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-container {
+  width: 100%;
+  height: 30px;
+  border-bottom: 2px solid rgb(87, 136, 209);
+}
+
+.modal-btn {
+  display: block;
+  margin: 40px auto;
+  padding: 10px 20px;
+  background-color: royalblue;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*모달 팝업 영역 스타일링*/
+.modal {
+  /*팝업 배경*/
+  display: none; /*평소에는 보이지 않도록*/
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal.on {
+  display: block;
+}
+
+.modal .modal-popup {
+/*팝업*/
+  position: absolute;
+  width: 400px;
+  height: 450px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.modal .modal-popup .close-btn {
+  display: block;
+  padding: 10px 20px;
+  background-color: royalblue;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.header {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 20px 0;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.radio-group {
+  text-align: left;
+  margin: 20px 0;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="radio"]:checked {
+  border-color: #007bff;
+  background-color: #007bff;
+}
+
+input[type="radio"]:checked::after {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+.create-btn {
+  display: block;
+  padding: 10px 20px;
+  background-color: royalblue;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
 }
 
 @media only screen and (min-width: 1200px) {

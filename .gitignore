@@ -1,3 +1,5 @@
 model/TTS
+model
+dalleapi.py
 
-db_model/
+mysql.py
