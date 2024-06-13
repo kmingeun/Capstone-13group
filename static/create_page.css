@@ -206,6 +206,7 @@ i {
   width: 100%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
   border-left: 2px solid black;
   border-right: 2px solid black;
   border-top: 2px solid black;
@@ -348,6 +349,25 @@ ul li img:active {
   cursor: grabbing;
 }
 
+.makingBtnDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+#create-story-btn {
+  padding: 15px 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.mainTitleDiv { 
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 100px 0px;
+}
 @media only screen and (min-width: 1200px) {
   .inner {
     max-width: 1200px;
