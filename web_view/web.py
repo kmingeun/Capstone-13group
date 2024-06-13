@@ -64,6 +64,30 @@ def create_page():
     web_id = current_user.web_id
     return render_template('create_page.html', web_id=web_id)
 
+#베이직 멤버
+@web_test.route('/basic_create_page')
+def basic_create_page():
+    web_id = current_user.web_id
+    return render_template('basic_create_page.html', web_id=web_id)
+
+#프로 멤버
+@web_test.route('/pro_create_page')
+def pro_create_page():
+    web_id = current_user.web_id
+    return render_template('pro_create_page.html', web_id=web_id)
+
+#프로플러스 멤버
+@web_test.route('/proPlus_create_page')
+def proPlus_create_page():
+    web_id = current_user.web_id
+    return render_template('proPlus_create_page.html', web_id=web_id)
+
+@web_test.route('/loading_page')
+def loading_page():
+    web_id = current_user.web_id
+    return render_template('loading_page.html', web_id=web_id)
+
+
 
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
