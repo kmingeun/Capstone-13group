@@ -5,7 +5,7 @@ MYSQL_CONN = pymysql.connect(
     host=MYSQL_HOST,
     port=3306,
     user='root',
-    passwd='abcd1234!@#$',
+    passwd='@ks24764056',
     db='fairy_tail',
     charset='utf8')
 
