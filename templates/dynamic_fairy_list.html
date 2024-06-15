@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>1시경 창작 동화</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <!-- https://fontawesome.com/start -->
+    <script src="https://kit.fontawesome.com/2744511e9f.js" crossorigin="anonymous"></script>
+    <!-- Spoca Han Sans Neo: https://spoqa.github.io/spoqa-han-sans/ko-KR/ -->
+    <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/fairy_list.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  </head>
+  <body>
+
+    <header>
+      <div class="inner">
+        <div class="head-container">
+          <div class="head-brand"><a href="/home">1시경 창작 동화</a></div>
+          <div class="credit-info d-flex ms-auto align-items-center" id="credit-info">
+            <div class="subscription-info me-3" id="subscription-info">
+              <span><span id="subscription-amount"></span></span><!--구독정보 표시-->
+            </div>
+            <span class="me-3">보유 크레딧: <span id="credit-amount">0</span></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="main">
+      <div class="main-container">
+        <div class="inner">
+          <div class="title-container">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="inner">
+        <div class="roadmap-container">
+          <div class="roadmap-title-container">
+            <div class="roadmap-title">텍스트 동화</div>
+            <div class="arrow-container">
+              <i class="fas fa-chevron-circle-left slide-prev"></i>
+              <i class="fas fa-chevron-circle-right slide-next"></i>
+            </div>
+          </div>
+          <ul class="class-list" data-position="0" id="text-fairy">
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="inner">
+        <div class="roadmap-container">
+          <div class="roadmap-title-container">
+            <div class="roadmap-title">텍스트/삽화 동화</div>
+            <div class="arrow-container">
+              <i class="fas fa-chevron-circle-left slide-prev"></i>
+              <i class="fas fa-chevron-circle-right slide-next"></i>
+            </div>
+          </div>
+          <ul class="class-list" data-position="0" id="image-fairy">
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="inner">
+        <div class="roadmap-container">
+          <div class="roadmap-title-container">
+            <div class="roadmap-title">텍스트/삽화/음성 동화</div>
+            <div class="arrow-container">
+              <i class="fas fa-chevron-circle-left slide-prev"></i>
+              <i class="fas fa-chevron-circle-right slide-next"></i>
+            </div>
+          </div>
+          <ul class="class-list" data-position="0" id="audio-fairy">
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- footer 를 넣을 예정-->
+    <footer>
+      <div class="inner">
+        <div class="pt-3 mt-4 text-body-secondary border-top">
+          &copy; 2024
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+    <script src="/static/js/dynamic_list.js"></script>
+    <script src="/static/js/subscription.js"></script>
+    <script>
+      $(document).ready(function() {
+          const web_id = "user_{{ web_id }}";
+          $.ajax({
+              url: '/home/api/list_image_setting/' + web_id,
+              type: 'GET',
+              success: function(response) {
+                  console.log(response);
+                  handleFolders(response);
+              },
+              error: function(error) {
+                  console.error("Error:", error);
+              }
+          });
+  
+          function handleFolders(data) {
+              if (data.story_t && Object.keys(data.story_t).length > 0) {
+                  processStoryT(data.story_t);
+              }
+  
+              if (data.story_i && Object.keys(data.story_i).length > 0) {
+                  processStoryI(data.story_i);
+              }
+  
+              if (data.story_a && Object.keys(data.story_a).length > 0) {
+                  console.log("호출됨")
+                  processStoryA(data.story_a);
+              }
+          }
+  
+          function processStoryT(folders) {
+            const audioFairyList = $("#text-fairy");
+            const baseUrl = window.location.origin; // 도메인 URL 가져오기
+
+            for (const folder in folders) {
+                const imagePath = folders[folder];
+                const fixedPath = baseUrl + '/' + imagePath.replace(/\\/g, '/');
+                const folderPath = fixedPath.substring(0, fixedPath.lastIndexOf('/'));
+                console.log(`Processing story_t: ${fixedPath}`);  // 디버깅용
+                const listItem = `
+                  <li class="class-card">
+                    <img src="${fixedPath}" class="class-image" />
+                      <div class="class-container">
+                        <div class="class-desc">
+                          <div class="class-title" onclick="location.href='dynamic_page_view?folder=${encodeURIComponent(folderPath)}'">${folder}</div>
+                        </div>
+                      </div>
+                    </a> 
+                  </li>`;
+                audioFairyList.append(listItem);
+              }
+          }
+  
+          function processStoryI(folders) {
+            const audioFairyList = $("#image-fairy");
+            const baseUrl = window.location.origin; // 도메인 URL 가져오기
+
+            for (const folder in folders) {
+                const imagePath = folders[folder];
+                const fixedPath = baseUrl + '/' + imagePath.replace(/\\/g, '/');
+                const folderPath = fixedPath.substring(0, fixedPath.lastIndexOf('/'));
+                console.log(`Processing story_i: ${fixedPath}`);  // 디버깅용
+                const listItem = `
+                  <li class="class-card">
+                    <img src="${fixedPath}" class="class-image" />
+                      <div class="class-container">
+                        <div class="class-desc">
+                          <div class="class-title" onclick="location.href='dynamic_page_view?folder=${encodeURIComponent(folderPath)}'">${folder}</div>
+                        </div>
+                      </div>
+                    </a> 
+                  </li>`;
+                audioFairyList.append(listItem);
+              }
+          }
+  
+          function processStoryA(folders) {
+            const audioFairyList = $("#audio-fairy");
+            const baseUrl = window.location.origin; // 도메인 URL 가져오기
+
+            for (const folder in folders) {
+                const imagePath = folders[folder];
+                const fixedPath = baseUrl + '/' + imagePath.replace(/\\/g, '/');
+                const folderPath = fixedPath.substring(0, fixedPath.lastIndexOf('/'));
+                console.log(`Processing story_a: ${fixedPath}`);  // 디버깅용
+                const listItem = `
+                  <li class="class-card">
+                    <img src="${fixedPath}" class="class-image" />
+                      <div class="class-container">
+                        <div class="class-desc">
+                          <div class="class-title" onclick="location.href='dynamic_page_view?folder=${encodeURIComponent(folderPath)}'">${folder}</div>
+                        </div>
+                      </div>
+                    </a> 
+                  </li>`;
+                audioFairyList.append(listItem);
+              }
+          }
+      });
+  </script>
+  </body>
+</html>

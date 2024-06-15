@@ -116,13 +116,11 @@ section {
 .slide-prev {
   font-size: 2rem;
   cursor: pointer;
-  color: rgb(47, 48, 89);
 }
 
 .slide-next {
   font-size: 2rem;
   cursor: pointer;
-  color: #cfd8dc;
 }
 
 .slide-prev-hover:hover {

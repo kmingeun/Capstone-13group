@@ -119,7 +119,9 @@ $(document).ready(function(){
   
       await generateText(response.folder_path); // 텍스트 생성
       await generateImage(response.folder_path); // 이미지 생성
-      // await generateAudio(response.folder_path); // 음성 생성 (필요시)
+      await generateAudio(response.folder_path); // 음성 생성 (필요시)
+      window.location.href = '/home/dynamic_fairy_list';
+      
     } catch (error) {
       console.log('Error:', error);
     }
@@ -178,6 +180,46 @@ $(document).ready(function(){
       console.log('Error generating images:', error);
     });
   }
+
+  function generateAudio(folderPath) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        url: '/home/api/generateAudio',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          folder_path: folderPath,
+          audioOption: selectedoption.audioOption ? selectedoption.audioOption : ''
+        }),
+        success: resolve,
+        error: reject
+      });
+    }).then(response => {
+      console.log('Audio generated successfully:', response);
+    }).catch(error => {
+      console.log('Error generating audio:', error);
+    });
+  }
+
+  $(function(){
+    $('#slider-div').slick({
+        slide: 'div',
+        infinite : true,
+        slidesToShow : 4,
+        slidesToScroll : 4,
+        rows: 2,
+        speed : 100,
+        arrows : true,
+        dots : true,
+        pauseOnHover : true,
+        vertical : false,
+        prevArrow : '<i class="fa-solid fa-chevron-left button_left"></i>',
+        nextArrow : '<i class="fa-solid fa-chevron-right button_right"></i>',
+        dotsClass : "slick-dots",
+        draggable : true,
+
+    });
+  })
 
 const modal = document.querySelector('.modal');
 const modalOpen = document.querySelector('.modal-btn');

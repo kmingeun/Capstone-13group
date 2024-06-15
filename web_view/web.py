@@ -7,6 +7,8 @@ import os
 from textmodel import create_story
 from dalleapi import gen
 import re
+from audio_model import model_load, generate_and_save_speech
+# from gptapi import get_story_title
 
 web_test = Blueprint('home', __name__)
 
@@ -47,7 +49,8 @@ def pricing():
 
 @web_test.route('/fairy_list')
 def fairy_list():
-    return render_template('fairy_list.html')
+    web_id = current_user.web_id
+    return render_template('fairy_list.html', web_id=web_id)
 
 @web_test.route('/before_page_view')
 def before_page_view():
@@ -61,7 +64,9 @@ def page_view():
 @web_test.route('/dynamic_page_view')
 def dynamic_page_view():
     web_id = current_user.web_id
-    return render_template('dynamic_page_view.html', web_id=web_id)
+    folder = request.args.get('folder')
+    print("dynamic_page_view_folder", folder)
+    return render_template('dynamic_page_view.html', web_id=web_id, folder=folder)
 
 @web_test.route('/create_page')
 def create_page():
@@ -80,6 +85,36 @@ def check():
     else:
         error = '유저 정보가 없습니다.'
         return render_template('/sign-in.html', error=error)
+    
+@web_test.route('/api/list_image_setting/<web_id>')
+def list_image_setting(web_id):
+    base_folder = os.path.join("static", web_id)
+    print("base_folder:", base_folder)
+    folder_types = ['story_t', 'story_i', 'story_a']
+    folder_data = {}
+
+    for folder_type in folder_types:
+        folder_data[folder_type] = {}
+        index = 1
+        while True:
+            folder_name = os.path.join(base_folder, f"{folder_type}{index}")
+            image_path = os.path.join(folder_name, "image_1.png")
+            print(f"Checking folder: {folder_name}, Image path: {image_path}")  # 디버깅용
+            if os.path.isdir(folder_name) and os.path.isfile(image_path):
+                folder_key = f"{folder_type}{index}"
+                folder_data[folder_type][folder_key] = image_path
+                index += 1
+            else:
+                print(f"Folder or file not found: {folder_name}, {image_path}")  # 디버깅용
+                break
+
+    print(folder_data)  # 디버깅용
+    return jsonify(folder_data)
+    
+@web_test.route('/dynamic_fairy_list')
+def dynamic_fairy_list():
+    web_id = current_user.web_id
+    return render_template('dynamic_fairy_list.html', web_id=web_id)
 
 @web_test.route('/api/get_user_info', methods=['GET'])
 def get_user_info():
@@ -129,29 +164,64 @@ def update_subscription():
 
     return jsonify({'success': True})
 
-@web_test.route('api/image_setting/<folder_name>')
-def image_setting(folder_name):
-    folder_path = os.path.join(os.getcwd(), 'static', folder_name)
+@web_test.route('/api/page_view_text_setting')
+def page_view_text_setting():
+    folder = request.args.get('folder')
+    if not folder:
+        return jsonify({"error": "No folder provided"}), 400
     
+    # 경로 수정: 'http://localhost:8080' 부분 제거
+    folder_path = folder.replace('http://localhost:8080', '').lstrip('/')
+    folder_path = os.path.join(os.getcwd(), folder_path)
+
     if not os.path.exists(folder_path):
         return jsonify({"error": "Folder not found"}), 404
+
+    text_files = [f for f in os.listdir(folder_path) if f.endswith('.txt')]
+    text_files.sort()
+    text_data = ""
+    for text_file in text_files:
+        with open(os.path.join(folder_path, text_file), 'r', encoding='utf-8') as file:
+            text_data += file.read()
+
+    return jsonify(text_data=text_data)
+
+@web_test.route('/api/page_view_image_setting')
+def page_view_image_setting():
+    folder = request.args.get('folder')
+    if not folder:
+        return jsonify({"error": "No folder provided"}), 400
+    
+    # 경로 수정: 'http://localhost:8080' 부분 제거
+    folder_path = folder.replace('http://localhost:8080', '').lstrip('/')
+    folder_path = os.path.join(os.getcwd(), folder_path)
+
+    if not os.path.exists(folder_path):
+        return jsonify({"error": "Folder not found"}), 404
+
     image_files = [f for f in os.listdir(folder_path) if f.endswith('.png')]
     image_files.sort()
-    image_paths = [os.path.join('static', folder_name, img) for img in image_files]
+    image_paths = [os.path.join('static', folder.replace('http://localhost:8080/static/', ''), img) for img in image_files]
     print(image_paths)
 
     return jsonify(image_paths=image_paths)
 
-@web_test.route('/api/audio_setting/<folder_name>')
-def audio_setting(folder_name):
-    folder_path = os.path.join(os.getcwd(), 'static', folder_name)
+@web_test.route('/api/page_view_audio_setting')
+def page_view_audio_setting():
+    folder = request.args.get('folder')
+    if not folder:
+        return jsonify({"error": "No folder provided"}), 400
+    
+    # 경로 수정: 'http://localhost:8080' 부분 제거
+    folder_path = folder.replace('http://localhost:8080', '').lstrip('/')
+    folder_path = os.path.join(os.getcwd(), folder_path)
 
     if not os.path.exists(folder_path):
         return jsonify({"error": "Folder not found"}), 404
 
     audio_files = [f for f in os.listdir(folder_path) if f.endswith('.wav')]
     audio_files.sort()
-    audio_paths = [os.path.join('static', folder_name, audio) for audio in audio_files]
+    audio_paths = [os.path.join('static', folder.replace('http://localhost:8080/static/', ''), audio) for audio in audio_files]
     print(audio_paths)
 
     return jsonify(audio_paths=audio_paths)
@@ -247,7 +317,79 @@ def generateImage():
                     img_file.write(image_bytes)
 
                 image_paths.append(image_path.replace("\\", "/"))
+        
+        # # GPT API를 사용하여 동화 제목 생성
+        # story_title = get_story_title(text)
+        # print(story_title)
+        # story_title_path = os.path.join(folder_path, 'story_title.txt')
+        # with open(story_title_path, 'w', encoding='utf-8') as title_file:
+        #     title_file.write(story_title)
+
+        # # 제목을 기반으로 새로운 이미지 생성 및 저장
+        # title_image_bytes = gen(story_title)
+        # title_image_path = os.path.join(folder_path, 'image_0.png')
+        # with open(title_image_path, 'wb') as title_img_file:
+        #     title_img_file.write(title_image_bytes)
 
         return jsonify({"status": "success", "imagePaths": image_paths})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+    
+@web_test.route('/api/generateAudio', methods=['POST'])
+def generate_audio():
+    data = request.json
+    folder_path = data.get('folder_path')
+    audio_option = data.get('audioOption')
+
+    if not folder_path:
+        return jsonify({"status": "error", "message": "Folder path not provided."}), 400
+
+    story_path = os.path.join(folder_path, 'story.txt')
+    if not os.path.exists(story_path):
+        return jsonify({"status": "error", "message": "Story file not found."}), 404
+
+    try:
+        with open(story_path, 'r', encoding='utf-8') as file:
+            text = file.read()
+
+        sentences = re.split(r'(?<=[.!?]) +', text)  # 문장을 온점, 느낌표, 물음표로 분할
+        print("sentences: ", sentences)
+        audio_paths = []
+
+        if audio_option == '기본 목소리':
+            config_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000/config.json"
+            checkpoint_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000/checkpoint_3000-006.pth"
+            checkpoint_dir = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000"
+            vocab_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/XTTS_v2.0_original_model_files/vocab.json"
+            audio_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/content-base/wavs/audio2.wav"
+
+            model, gpt_cond_latent, speaker_embedding = model_load(
+                config_path, checkpoint_path, checkpoint_dir, vocab_path, audio_path, model_type="base"
+            )
+
+        elif audio_option == '내 목소리':
+            config_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000/config.json"
+            checkpoint_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000/checkpoint_3906-001.pth"
+            checkpoint_dir = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000"
+            vocab_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/XTTS_v2.0_original_model_files/vocab.json"
+            audio_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/content-fam/wavs/audio2.wav"
+
+            model, gpt_cond_latent, speaker_embedding = model_load(
+                config_path, checkpoint_path, checkpoint_dir, vocab_path, audio_path, model_type="fam"
+            )
+        else:
+            return jsonify({"status": "error", "message": "Invalid audio option provided."}), 400
+
+        for idx, sentence in enumerate(sentences):
+            sentence = sentence.strip()
+            print("sentence: ", sentence)
+            if sentence:
+                output_path = os.path.join(folder_path, f'audio_{idx + 1}.wav')
+                generate_and_save_speech(
+                    model, sentence, gpt_cond_latent, speaker_embedding, output_path, language="ko", temperature=0.7, volume_factor=3.0
+                )
+                audio_paths.append(output_path.replace("\\", "/"))
+
+        return jsonify({"status": "success", "audioPaths": audio_paths})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
