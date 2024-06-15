@@ -10,6 +10,7 @@
     <!-- Spoca Han Sans Neo: https://spoqa.github.io/spoqa-han-sans/ko-KR/ -->
     <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/static/fairy_list.css" />
+    <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
 
@@ -198,10 +199,24 @@
       </div>
     </section>
     <!-- footer 를 넣을 예정-->
-    <footer>
-      <div class="inner">
-        <div class="pt-3 mt-4 text-body-secondary border-top">
-          &copy; 2024
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+          <div>Ai SME Story</div>
+          <small class="d-block mb-3 text-body-secondary">&copy; 2024</small>
+        </div>
+        <div class="col-6 col-md">
+          <h5 onclick="location.href='service_intro'" style="cursor: pointer;">서비스 소개</h5>
+        </div>
+        <div class="col-6 col-md">
+          <h5>자주하는 질문</h5>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">팀</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">위치</a></li>
+          </ul>
         </div>
       </div>
     </footer>

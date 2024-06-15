@@ -56,6 +56,18 @@ def fairy_list():
 def before_page_view():
     return render_template('page_view.html')
 
+@web_test.route('/service_intro')
+def service_intro():
+    return render_template('service_intro.html')
+
+@web_test.route('/question')
+def question():
+    return render_template('question.html')
+
+@web_test.route('/sign_up')
+def sign_up():
+    return render_template('sign_up.html')
+
 @web_test.route('/page_view')
 def page_view():
     web_id = current_user.web_id
@@ -70,7 +82,33 @@ def dynamic_page_view():
 
 @web_test.route('/create_page')
 def create_page():
-    return render_template('create_page.html')
+    web_id = current_user.web_id
+    return render_template('create_page.html', web_id=web_id)
+
+#베이직 멤버
+@web_test.route('/basic_create_page')
+def basic_create_page():
+    web_id = current_user.web_id
+    return render_template('basic_create_page.html', web_id=web_id)
+
+#프로 멤버
+@web_test.route('/pro_create_page')
+def pro_create_page():
+    web_id = current_user.web_id
+    return render_template('pro_create_page.html', web_id=web_id)
+
+#프로플러스 멤버
+@web_test.route('/proPlus_create_page')
+def proPlus_create_page():
+    web_id = current_user.web_id
+    return render_template('proPlus_create_page.html', web_id=web_id)
+
+@web_test.route('/loading_page')
+def loading_page():
+    web_id = current_user.web_id
+    return render_template('loading_page.html', web_id=web_id)
+
+
 
 @web_test.route('/check', methods=['POST']) # 유저정보 확인
 def check():
