@@ -37,7 +37,7 @@
                     <div class="bookcover">
                         <div id="f1" class="front-content">
                             <div class="cover-text">
-                                <h1>동물 친구들과 마법의 왕국</h1>
+                                <h1></h1>
                             </div> 
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                                     <source src="/static/audio/combined.wav" type="audio/wav">
                                 </audio>
                             </div>
-                            <h1>옛날 옛적에, 푸른 숲 속 깊은 곳에 마법의 왕국이 있었습니다. 그곳에는 용감하고 지혜로운 소녀, 엘라가 살고 있었죠. 엘라는 항상 초록색 망토를 두르고 다니며 마법의 힘을 사용해 동물 친구들을 도와주곤 했어요. 하루는 왕국에 큰 위기가 닥쳤습니다. 마법의 성이 어둠의 마법사에게 점령당한 것이었어요. 엘라는 동물 친구들과 함께 성을 되찾기 위해 떠났습니다.</h1>
+                            <h1></h1>
                         </div>
                     </div>
                     <div class="back">
@@ -74,7 +74,7 @@
                                     <source src="/static/audio/combined2.wav" type="audio/wav">
                                 </audio>
                             </div>
-                            <h1>엘라는 동물 친구들과 함께 어둠의 마법사와 맞서 싸웠고, 동물 친구들의 특별한 능력 덕분에 마법의 성을 되찾을 수 있었습니다. 왕국은 다시 평화로워졌고, 엘라는 동물 친구들과 함께 행복하게 살았답니다. 그들은 용기와 우정의 힘으로 어려움을 이겨냈고, 이 경험은 모두에게 소중한 추억으로 남았습니다.</h1>
+                            <h1></h1>
                         </div>
                     </div>
                     <div class="back">
@@ -105,54 +105,56 @@
         <script type="text/babel" src="/static/js/fairy_list.js"></script>
         <script src="/static/js/subscription.js"></script>
         <script>
-            $(document).ready(function() {
-                const web_id = "user_{{ web_id }}";
-                console.log(web_id)
-                $.ajax({
-                    url: '/home/api/image_setting/' + web_id, // 이미지 경로를 가져오는 API 엔드포인트
-                    type: 'GET',
-                    success: function(response) {
-                        const imagePaths = response.image_paths;
-                        const baseUrl = window.location.origin; // 도메인 URL 가져오기
+        $(document).ready(function() {
+            const folderPath = "{{ folder }}"; // 전달받은 폴더 경로
+            console.log("folderPath:", folderPath)
 
-                        // 이미지 경로를 정해진 순서에 따라 각 컨테이너에 추가
-                        const containers = ['#f1', '#b1', '#b2', '#b3', '#b4'];
+            $.ajax({
+                url: '/home/api/page_view_image_setting', // 이미지 경로를 가져오는 API 엔드포인트
+                type: 'GET',
+                data: { folder: folderPath },
+                success: function(response) {
+                    const imagePaths = response.image_paths;
+                    const baseUrl = window.location.origin; // 도메인 URL 가져오기
 
-                        containers.forEach((selector, index) => {
-                            if (imagePaths[index]) {
-                                const fixedPath = baseUrl + '/' + imagePaths[index].replace(/\\/g, '/');
-                                console.log(fixedPath);
-                                
-                                let className = '';
-                                switch (selector) {
-                                    case '#f1':
-                                        className = 'cover-image';
-                                        break;
-                                    case '#b1':
-                                    case '#b2':
-                                    case '#b3':
-                                        className = 'main-image';
-                                        break;
-                                    case '#b4':
-                                        className = 'backimage';
-                                        break;
-                                }
+                    // 이미지 경로를 정해진 순서에 따라 각 컨테이너에 추가
+                    const containers = ['#f1', '#b1', '#b2', '#b3', '#b4'];
 
-                                const imgElement = `<img src="${fixedPath}" class="${className}">`;
-                                $(selector).append(imgElement);
+                    containers.forEach((selector, index) => {
+                        if (imagePaths[index]) {
+                            const fixedPath = baseUrl + '/' + imagePaths[index].replace(/\\/g, '/');
+                            console.log("fixedPath:",fixedPath);
+                            
+                            let className = '';
+                            switch (selector) {
+                                case '#f1':
+                                    className = 'cover-image';
+                                    break;
+                                case '#b1':
+                                case '#b2':
+                                case '#b3':
+                                    className = 'main-image';
+                                    break;
+                                case '#b4':
+                                    className = 'backimage';
+                                    break;
                             }
-                        });
-                    },
-                    error: function(error) {
-                        console.error("Error fetching images:", error);
-                    }
-                });
+
+                            const imgElement = `<img src="${fixedPath}" class="${className}">`;
+                            $(selector).append(imgElement);
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching images:", error);
+                }   
             });
 
             // 음성 파일 경로를 가져오는 AJAX 호출
             $.ajax({
-                url: '/home/api/audio_setting/' + web_id, // 음성 파일 경로를 가져오는 API 엔드포인트
+                url: '/home/api/page_view_audio_setting', // 음성 파일 경로를 가져오는 API 엔드포인트
                 type: 'GET',
+                data: { folder: folderPath },
                 success: function(response) {
                     const audioPaths = response.audio_paths;
                     const baseUrl = window.location.origin;
@@ -173,6 +175,34 @@
                     console.error("Error fetching audio files:", error);
                 }
             });
+
+                // 텍스트 파일 경로를 가져오는 AJAX 호출
+    $.ajax({
+        url: '/home/api/page_view_text_setting', // 텍스트 파일 경로를 가져오는 API 엔드포인트
+        type: 'GET',
+        data: { folder: folderPath },
+        success: function(response) {
+            const textData = response.text_data;
+            const sentences = textData.split('.').filter(sentence => sentence.trim().length > 0);
+
+            // 각 페이지에 2줄씩 배치
+            const textContainers = ['#f2', '#f3', '#f4'];
+            let sentenceIndex = 0;
+
+            textContainers.forEach(selector => {
+                if (sentenceIndex < sentences.length) {
+                    const text = sentences[sentenceIndex].trim() + ". " + (sentences[sentenceIndex + 1] ? sentences[sentenceIndex + 1].trim() + "." : "");
+                    sentenceIndex += 2;
+                    const textElement = `<h1>${text}</h1>`;
+                    $(selector).append(textElement);
+                }
+            });
+        },
+        error: function(error) {
+            console.error("Error fetching text files:", error);
+        }
+    });
+});
         </script>
     </body>
 </html>
