@@ -1,14 +1,14 @@
 import torch
 import transformers
-from transformers import AutoModelWithLMHead, PreTrainedTokenizerFast
+from transformers import PreTrainedTokenizerFast
 from fastai.text.all import *
 import fastai
 import re
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
 
 #로컬모델 사용
-model_path = "C:/Users/ens95/Desktop/Capstone-13group/model/Textmodel/tale"
-tokenizer = PreTrainedTokenizerFast.from_pretrained("skt/kogpt2-base-v2",
+model_path = "C:/workspace/capstone/Capstone-13group/model/Textmodel/tale" 
+tokenizer = GPT2Tokenizer.from_pretrained("skt/kogpt2-base-v2",
   bos_token='</s>', eos_token='</s>', unk_token='<unk>',
   pad_token='<pad>', mask_token='<mask>')
 

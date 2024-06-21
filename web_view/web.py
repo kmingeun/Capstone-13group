@@ -4,8 +4,8 @@ from web_control.user_mgmt import User
 from web_control.session_mgmt import WebSession
 import datetime
 import os
-from textmodel import create_story
-from dalleapi import gen
+#from textmodel import create_story
+#from web_view.dalleapi import gen
 import re
 from audio_model import model_load, generate_and_save_speech
 # from gptapi import get_story_title
@@ -23,7 +23,7 @@ def home():
     else: # 현재 유저가 등록된 사용자가 아니라면   
         print('XXXXXXX')  
         return render_template('before_login.html')
-       
+
 
 @web_test.route('/sign-in') # 로그인
 def sign_in():
@@ -55,10 +55,6 @@ def fairy_list():
 @web_test.route('/before_page_view')
 def before_page_view():
     return render_template('page_view.html')
-
-@web_test.route('/service_intro')
-def service_intro():
-    return render_template('service_intro.html')
 
 @web_test.route('/question')
 def question():
@@ -270,7 +266,7 @@ def send_create_info():
     web_id = current_user.web_id
 
     # 기본 경로 설정
-    base_path = "C:/Users/ens95/Desktop/Capstone-13group/static" 
+    base_path = "C:/workspace/capstone/Capstone-13group/static" 
     user_path = os.path.join(base_path, f'user_{web_id}')
 
     # 유저 폴더 생성
@@ -395,22 +391,22 @@ def generate_audio():
         audio_paths = []
 
         if audio_option == '기본 목소리':
-            config_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000/config.json"
-            checkpoint_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000/checkpoint_3000-006.pth"
-            checkpoint_dir = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000"
-            vocab_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/XTTS_v2.0_original_model_files/vocab.json"
-            audio_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/content-base/wavs/audio2.wav"
+            config_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000/config.json"
+            checkpoint_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000/checkpoint_3000-006.pth"
+            checkpoint_dir = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-April-15-2024_11+22PM-0000000"
+            vocab_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-base/run/training/XTTS_v2.0_original_model_files/vocab.json"
+            audio_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/content-base/wavs/audio2.wav"
 
             model, gpt_cond_latent, speaker_embedding = model_load(
                 config_path, checkpoint_path, checkpoint_dir, vocab_path, audio_path, model_type="base"
             )
 
         elif audio_option == '내 목소리':
-            config_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000/config.json"
-            checkpoint_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000/checkpoint_3906-001.pth"
-            checkpoint_dir = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000"
-            vocab_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/XTTS_v2.0_original_model_files/vocab.json"
-            audio_path = "C:/Users/ens95/Desktop/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/content-fam/wavs/audio2.wav"
+            config_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000/config.json"
+            checkpoint_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000/checkpoint_3906-001.pth"
+            checkpoint_dir = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/GPT_XTTS_v2.0_BBANGHYONG_FT-May-22-2024_12+58AM-0000000"
+            vocab_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/checkpoint-test-fam/run/training/XTTS_v2.0_original_model_files/vocab.json"
+            audio_path = "C:/workspace/capstone/Capstone-13group/model/TTS/recipes/ljspeech/xtts_v2/content-fam/wavs/audio2.wav"
 
             model, gpt_cond_latent, speaker_embedding = model_load(
                 config_path, checkpoint_path, checkpoint_dir, vocab_path, audio_path, model_type="fam"
