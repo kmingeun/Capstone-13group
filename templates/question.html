@@ -29,6 +29,11 @@
     
 
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap');
+      body{
+        font-family: "IBM Plex Sans KR", sans-serif;
+      }
+     
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -70,7 +75,7 @@
         height: 2.75rem;
         overflow-y: hidden;
       }
-
+      
       .nav-scroller .nav {
         display: flex;
         flex-wrap: nowrap;
@@ -166,6 +171,23 @@
         font-size: 17px;
         font-weight: bold;
       }
+      .mainTextDiv {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+        }
+        .titleText {
+          margin-top: 100px;
+          font-size: 40px;
+          font-weight: 900;
+          color: #343434; 
+        }
+        .directText {
+          font-size: 18px;
+          margin: 50px 0px;
+
+        }
     </style>
   </head>
   <body>
@@ -205,6 +227,10 @@
             </div>
           </div>
         </header>
+        <div class="mainTextDiv">
+          <span class="titleText">자주하는 질문</span>
+          <div class="directText">Ai SME Story는 부모님의 목소리를 학습시켜,<br> 아이들이 가장 사랑하는 부모님의 목소리로 동화를 들을 수 있도록 설계되었습니다.<br> 아이들은 부모님의 따뜻한 목소리로 들려주는 동화를 통해 더욱 친밀하고 특별한 경험을 하게 됩니다.</div>
+        </div>
         <div class="accordion accordion-flush" id="accordionFlushExample">
           <div class="accordion-item">
             <h2 class="accordion-header">
@@ -239,9 +265,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                first item's accordion body.
+              <code>AI SME Story</code>는 인공지능 기술을 활용하여 맞춤형 동화책을 제작하는 서비스입니다. 부모님의 목소리를 학습하고, Coqui TTS를 통해 생성된 동화를 부모님의 목소리로 낭독해주어 아이들에게 친숙하고 따뜻한 음성으로 동화를 들려줍니다. 또한, KoGPT-2를 이용해 한국어에 특화된 자연스러운 동화 텍스트를 생성하고, OpenAI의 DALL-E를 통해 각 이야기의 삽화까지 자동으로 생성합니다. <br><code>AI SME Story</code>는 아이들에게 더욱 풍부하고 생동감 넘치는 독서 경험을 제공합니다.
               </div>
             </div>
           </div>
@@ -318,12 +342,11 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+                <b>아이들의 독서 습관 형성</b>: AI SME Story는 부모님의 목소리로 동화를 들려주어 아이들이 독서에 흥미를 갖게 합니다. 친숙한 목소리를 통해 더욱 즐겁고 친밀한 독서 경험을 제공하여, 아이들이 책을 좋아하게 되고 독서 습관을 형성하는 데 도움을 줍니다.
+
+<br><br><b>부모와의 정서적 유대 강화</b>: 부모님의 목소리를 학습한 AI가 동화를 낭독함으로써, 부모가 바쁜 일정 속에서도 아이들과의 정서적 유대를 유지할 수 있습니다. 부모의 목소리로 들려주는 동화는 아이들에게 안도감을 주고, 부모와의 특별한 유대감을 강화합니다.
+
+<br><br><b>교육적인 목적</b>: AI SME Story는 다양한 주제와 스타일의 동화를 제공하여, 아이들의 상상력과 창의력을 자극합니다. 이를 통해 아이들은 다양한 이야기를 통해 세상을 배우고, 언어 능력과 사고력을 향상시킬 수 있습니다.
               </div>
             </div>
           </div>
@@ -351,7 +374,7 @@
                     d="M8.73 12.476c-.554-1.091-1.204-2.193-2.473-2.193-.242 0-.484.04-.707.142l-.43-.863c.525-.45 1.373-.808 2.464-.808 1.697 0 2.568.818 3.26 1.86.41-.89.605-2.093.605-3.584 0-3.724-1.165-5.636-3.885-5.636-2.68 0-3.839 1.912-3.839 5.636 0 3.704 1.159 5.596 3.84 5.596.425 0 .811-.046 1.166-.15Zm.665 1.3a7 7 0 0 1-1.83.244C3.994 14.02.5 11.172.5 7.03.5 2.849 3.995 0 7.564 0c3.63 0 7.09 2.828 7.09 7.03 0 2.337-1.09 4.236-2.675 5.464.512.767 1.04 1.277 1.773 1.277.802 0 1.125-.62 1.179-1.105h1.043c.061.647-.262 3.334-3.178 3.334-1.767 0-2.7-1.024-3.4-2.224Z"
                   />
                 </svg>
-                동화책 생성은 어떤 순서로 진행해야 하나요?
+                동화책 생성은 어떤 순서로 진행되나요?
               </button>
             </h2>
             <div
@@ -360,12 +383,13 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+                동화책 생성은 다음과 같은 단계를 거쳐 진행됩니다.
+                <br><br><b>1. 동화 생성 페이지에 접속하기</b>: 서비스에 로그인하고 동화 생성 페이지에 접속합니다.
+                <br><br><b>2. 동화 주인공과 주변 인물 선택하기</b>: 아이가 좋아하는 주인공과 주변 인물들을 선택하여 맞춤형 이야기를 만듭니다.
+                <br><br><b>3. KoGPT-2를 이용한 동화 텍스트 생성</b>: 선택한 인물들을 바탕으로 최신 인공지능 기술인 KoGPT-2를 사용하여 자연스럽고 창의적인 동화 텍스트를 생성합니다.
+                <br><br><b>4. DALL-E 3을 이용한 삽화 생성</b>: 생성된 동화 텍스트에 맞춰 DALL-E 3을 사용해 아름답고 생동감 넘치는 삽화를 제작합니다.
+                <br><br><b>5. XTTS-v2를 이용한 학습된 음성 모델 사용</b>: 부모님의 목소리를 학습한 XTTS-v2 음성 모델을 통해 동화를 낭독합니다.
+                <br><br><b>6. 사용자 선택을 기반으로 한 낭독 동화 완성</b>: 사용자가 선택한 요소들을 기반으로 최종 동화책이 완성되며, 아이는 부모님의 목소리로 들려주는 특별한 동화를 즐길 수 있습니다.
               </div>
             </div>
           </div>
@@ -403,12 +427,7 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+                그림 생성은 <code>DALL-E</code>라는 OpenAI가 개발한 이미지 생성 인공지능을 사용합니다. 이 모델은 텍스트 설명을 바탕으로 고유한 이미지를 생성할 수 있는 능력을 갖추고 있습니다. 동화 생성 페이지에서 "백경, 강아지, 고양이"라는 키워드로 동화를 생성하면, 그에 맞는 이미지를 자동으로 생성해줍니다.
               </div>
             </div>
           </div>
@@ -445,12 +464,13 @@
               data-bs-parent="#accordionFlushExample"
             >
               <div class="accordion-body">
-                Placeholder content for this accordion, which is intended to
-                demonstrate the <code>.accordion-flush</code> class. This is the
-                third item's accordion body. Nothing more exciting happening
-                here in terms of content, but just filling up the space to make
-                it look, at least at first glance, a bit more representative of
-                how this would look in a real-world application.
+                <b>유아 (3~5세)</b>: 이 연령대의 아이들은 부모님의 목소리로 들려주는 동화를 통해 언어 능력과 상상력을 키울 수 있습니다. 친숙한 목소리는 아이들에게 정서적 안정감을 주고, 이야기 속 다양한 캐릭터와 상황을 통해 상상력을 자극합니다.
+
+<br><br><b>유치원생 (5~7세)</b>: 유치원에 다니는 아이들은 이야기를 통해 다양한 어휘를 배우고, 이야기의 구조와 흐름을 이해하는 능력을 기를 수 있습니다. 또한, 삽화와 함께 제공되는 동화는 시각적 학습을 도와줍니다.
+
+<br><br><b>초등학교 저학년 (7~9세)</b>: 초등학교 저학년 아이들은 더 복잡한 이야기와 다양한 주제의 동화를 통해 독서의 즐거움을 느낄 수 있습니다. AI SME Story는 이 연령대의 아이들에게 맞춤형 동화를 제공하여, 독서 습관을 형성하고 창의적 사고를 촉진합니다.
+
+<br><br>또한, AI SME Story는 특정 연령대에 국한되지 않고, 다양한 연령대의 아이들에게 맞춤형 콘텐츠를 제공할 수 있도록 설계되었습니다. 부모님은 아이의 연령과 관심사에 맞는 동화를 선택하여 더욱 효과적으로 활용할 수 있습니다.
               </div>
             </div>
           </div>

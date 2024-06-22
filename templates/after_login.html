@@ -1,24 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko" data-bs-theme="auto">
-  <head><script src="/static/js/color-modes.js"></script>
+  <head>
+    <script src="/static/js/color-modes.js"></script>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta
+      name="author"
+      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
+    />
+    <meta name="generator" content="Hugo 0.122.0" />
+
     <title>1시경 창작 동화</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/jumbotron/">
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.3/examples/jumbotron/"
+    />
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
+
+    <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet" />
     
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-  <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap');
+      body {
+        font-family: "IBM Plex Sans KR", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+      }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -36,10 +52,11 @@
       .b-example-divider {
         width: 100%;
         height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
+        background-color: rgba(0, 0, 0, 0.1);
+        border: solid rgba(0, 0, 0, 0.15);
         border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+          inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
       }
 
       .b-example-vr {
@@ -49,7 +66,7 @@
       }
 
       .bi {
-        vertical-align: -.125em;
+        vertical-align: -0.125em;
         fill: currentColor;
       }
 
@@ -96,19 +113,19 @@
         display: block !important;
       }
 
-      .custom-box-shadow{
+      .custom-box-shadow {
         box-shadow: 10px 5px 10px rgba(25, 42, 70, 0.2);
       }
 
-      .moving{
+      .moving {
         transition: 0.4s;
       }
 
-      .moving:hover{
+      .moving:hover {
         transform: translate(0, -5px);
       }
 
-      .font{
+      .font {
         font-weight: 540;
         font-size: 16px;
       }
@@ -118,16 +135,29 @@
         font-size: 35px;
       }
 
-      .btn-primary{
-        --bs-btn-color:#fff;--bs-btn-bg:#0d6efd;--bs-btn-border-color:#0d6efd;--bs-btn-hover-color:#fff;--bs-btn-hover-bg:#0b5ed7;--bs-btn-hover-border-color:#0a58ca;--bs-btn-focus-shadow-rgb:49,132,253;--bs-btn-active-color:#fff;--bs-btn-active-bg:#0a58ca;--bs-btn-active-border-color:#0a53be;--bs-btn-active-shadow:inset 0 3px 5px rgba(0, 0, 0, 0.125);--bs-btn-disabled-color:#fff;--bs-btn-disabled-bg:#0d6efd;--bs-btn-disabled-border-color:#0d6efd
+      .btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #0d6efd;
+        --bs-btn-border-color: #0d6efd;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #0b5ed7;
+        --bs-btn-hover-border-color: #0a58ca;
+        --bs-btn-focus-shadow-rgb: 49, 132, 253;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #0a58ca;
+        --bs-btn-active-border-color: #0a53be;
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #0d6efd;
+        --bs-btn-disabled-border-color: #0d6efd;
       }
 
       .custom-background {
-      background-image: url('/static/img/background.png'); /* 배경 이미지 경로 */
-      background-size: cover; /* 배경 이미지 크기 조절 */
-      background-position: center; /* 배경 이미지 위치 조절 */
-      background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
-      color: white;
+        background-image: url("/static/img/background.png"); /* 배경 이미지 경로 */
+        background-size: cover; /* 배경 이미지 크기 조절 */
+        background-position: center; /* 배경 이미지 위치 조절 */
+        background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
+        color: white;
       }
       .list-ikon {
         margin-left: 300px;
@@ -137,78 +167,146 @@
       }
     </style>
   </head>
-  <body>  
+  <body>
     <main>
       <div class="container py-4">
         <header class="pb-3 mb-4 border-bottom">
-          <div class="d-flex align-items-center text-body-emphasis text-decoration-none">
+          <div
+            class="d-flex align-items-center text-body-emphasis text-decoration-none"
+          >
             <span class="title-text">Ai SME Story</span>
-            <div class="credit-info d-flex ms-auto align-items-center" id="credit-info">
+            <div
+              class="credit-info d-flex ms-auto align-items-center"
+              id="credit-info"
+            >
               <div class="subscription-info me-3" id="subscription-info">
-                <span><span id="subscription-amount"></span></span><!--구독정보 표시-->
+                <span><span id="subscription-amount"></span></span
+                ><!--구독정보 표시-->
               </div>
-              <span style="cursor: pointer;" onclick="location.href='service_intro'">서비스 소개</span>
+              <span
+                style="cursor: pointer"
+                onclick="location.href='service_intro'"
+                >서비스 소개</span
+              >
               <span>ㅣ</span>
               <span>나의 동화책</span>
               <span>ㅣ</span>
-              <span class="me-3 font">보유 크레딧: <span id="credit-amount">0</span></span>
-              <button type="button" class="btn btn-outline-dark font" onclick="location.href='/home/logout'">logout</button>
+              <span class="me-3 font"
+                >보유 크레딧: <span id="credit-amount">0</span></span
+              >
+              <button
+                type="button"
+                class="btn btn-outline-dark font"
+                onclick="location.href='/home/logout'"
+              >
+                logout
+              </button>
             </div>
           </div>
         </header>
 
-        <div class="p-5 mb-4 bg-body-tertiary rounded-3 custom-box-shadow moving custom-background">
+        <div
+          class="p-5 mb-4 bg-body-tertiary rounded-3 custom-box-shadow moving custom-background"
+        >
           <div class="container-fluid py-5">
             <h1 class="display-5 fw-bold">동화 생성</h1>
-            <p style="font-weight:500" class="col-md-8 fs-4">나만의 동화를 만들고 아이들에게 들려주세요!</p>
-            <button style="font-weight: 900; background-color: #4718a7; border-color: #4718a7;" class="btn btn-primary btn-lg" type="button" onclick="location.href='/home/create_page'">생성하기</button>
+            <p style="font-weight: 500" class="col-md-8 fs-4">
+              나만의 동화를 만들고 아이들에게 들려주세요!
+            </p>
+            <button
+              style="
+                font-weight: 900;
+                background-color: #4718a7;
+                border-color: #4718a7;
+              "
+              class="btn btn-primary btn-lg"
+              type="button"
+              onclick="location.href='/home/create_page'"
+            >
+              생성하기
+            </button>
           </div>
         </div>
 
         <div class="row align-items-md-stretch">
-          <div class="col-md-6 ">
-            <div class="h-100 p-5 text-bg-dark rounded-3 custom-box-shadow moving">
-              <h2 style="font-weight: 900;">동화 리스트</h2>
-              <p>생성된 동화들은 최대 n개까지 저장되며 소정의 비용으로 나만의 동화책을 출판 받아 보세요.</p>
-              <button class="btn btn-outline-light" type="button" onclick="location.href='fairy_list'">리스트 보려가기</button>
+          <div class="col-md-6">
+            <div
+              class="h-100 p-5 text-bg-dark rounded-3 custom-box-shadow moving"
+            >
+              <h2 style="font-weight: 900">동화 리스트</h2>
+              <p>
+                생성된 동화들은 최대 n개까지 저장되며 소정의 비용으로 나만의
+                동화책을 출판 받아 보세요.
+              </p>
+              <button
+                class="btn btn-outline-light"
+                type="button"
+                onclick="location.href='fairy_list'"
+              >
+                리스트 보려가기
+              </button>
               <span>
-                <img src="/static/img/tech_icon-4.png" class="list-ikon">
+                <img src="/static/img/tech_icon-4.png" class="list-ikon" />
               </span>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="h-100 p-5 bg-body-tertiary border rounded-3 custom-box-shadow moving">
-              <h2 style="font-weight: 900;">더 많은 서비스</h2>
-              <p>부모님의 목소리로 동화 읽어주기, 전자책 낭독서비스 등 멤버쉽에 가입하여 원하는 동화책을 만들어보세요.</p>
-              <button class="btn btn-outline-secondary" type="button" onclick="location.href='pricing'">구독하기</button>
+            <div
+              class="h-100 p-5 bg-body-tertiary border rounded-3 custom-box-shadow moving"
+            >
+              <h2 style="font-weight: 900">더 많은 서비스</h2>
+              <p>
+                부모님의 목소리로 동화 읽어주기, 전자책 낭독서비스 등 멤버쉽에
+                가입하여 원하는 동화책을 만들어보세요.
+              </p>
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                onclick="location.href='pricing'"
+              >
+                구독하기
+              </button>
               <span>
-                <img src="/static/img/tech_icon-2.png" class="service-ikon">
+                <img src="/static/img/tech_icon-2.png" class="service-ikon" />
               </span>
             </div>
           </div>
         </div>
 
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
-    <div class="row">
-      <div class="col-12 col-md">
-        <div>Ai SME Story</div>
-        <small class="d-block mb-3 text-body-secondary">&copy; 2024</small>
-      </div>
-      <div class="col-6 col-md">
-        <h5 onclick="location.href='service_intro'" style="cursor: pointer;">서비스 소개</h5>
-      </div>
-      <div class="col-6 col-md">
-        <h5>자주하는 질문</h5>
-      </div>
-      <div class="col-6 col-md">
-        <h5>About</h5>
-        <ul class="list-unstyled text-small">
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">팀</a></li>
-          <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">위치</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+          <div class="row">
+            <div class="col-12 col-md">
+              <div>Ai SME Story</div>
+              <small class="d-block mb-3 text-body-secondary"
+                >&copy; 2024</small
+              >
+            </div>
+            <div class="col-6 col-md">
+              <h5
+                onclick="location.href='service_intro'"
+                style="cursor: pointer"
+              >
+                서비스 소개
+              </h5>
+            </div>
+            <div class="col-6 col-md">
+              <h5>자주하는 질문</h5>
+            </div>
+            <div class="col-6 col-md">
+              <h5>About</h5>
+              <ul class="list-unstyled text-small">
+                <li class="mb-1">
+                  <a class="link-secondary text-decoration-none" href="#">팀</a>
+                </li>
+                <li class="mb-1">
+                  <a class="link-secondary text-decoration-none" href="#"
+                    >위치</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
       </div>
     </main>
     <script src="/static/dist/js/bootstrap.bundle.min.js"></script>

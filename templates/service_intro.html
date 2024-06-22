@@ -180,7 +180,7 @@
             font-weight: 100;
             position: absolute;
             left: -5vw;
-            top: -16vw;
+            top: -23vw;
             opacity: 0.07;
             z-index: -2;
         }
@@ -191,6 +191,7 @@
         }
         .content__item__title {
             font-weight: 400;
+            font-size: 45px;
             text-transform: capitalize;
         }
         .content__item__imgWrap { 
@@ -201,6 +202,7 @@
             position: relative;
             overflow: hidden;
             z-index: -1;
+            
         }
         .content__item__img {
             position: absolute;
@@ -214,26 +216,27 @@
             top: -5%;
             transition: all 1s;
         }
+      
         .content__item:nth-child(1) .content__item__img {
-            background-image: url(/static/img/동물\ 친구들과\ 마법의\ 왕국.webp);
+            background-image: url(/static/img/kogpt.png);
         }
         .content__item:nth-child(2) .content__item__img {
-            background-image: url(/static/img/마법\ 양탄자와\ 하늘을\ 나는\ 모험.webp);
+            background-image: url(/static/img/fairytale.jpg);
         }
         .content__item:nth-child(3) .content__item__img {
-            background-image: url(/static/img/마법의\ 나무와\ 소녀의\ 동물\ 친구들.webp);
+            background-image: url(/static/img/dalle.png);
         }
         .content__item:nth-child(4) .content__item__img {
-            background-image: url(/static/img/마법의\ 숲에서\ 유니콘과\ 소녀의\ 모험.webp);
+            background-image: url(/static/img/동물\ 친구들과\ 마법의\ 왕국.webp);
         }
         .content__item:nth-child(5) .content__item__img {
-            background-image: url(/static/img/마법의\ 책과\ 신비한\ 성.webp);
+            background-image: url(/static/img/tts.png);
         }
         .content__item:nth-child(6) .content__item__img {
             background-image: url(/static/img/마법의\ 천체망원경과\ 별빛\ 모험.webp);
         }
         .content__item:nth-child(7) .content__item__img {
-            background-image: url(/static/img/소녀와\ 마법의\ 숲.webp);
+            background-image: url(/static/img/요약.png);
         }
         .content__item:nth-child(8) .content__item__img {
             background-image: url(/static/img/시간\ 여행자와\ 역사\ 속\ 친구들.webp);
@@ -241,12 +244,24 @@
         .content__item:nth-child(9) .content__item__img {
             background-image: url(/static/img/얼음\ 성과\ 눈의\ 왕국\ 모험.webp);
         }
-        .content__item__desc {
-            font-size: 4vw;
+        .content__item__desc__right {
+            font-size: 22px;
             line-height: 1.4;
-            margin-top: -5vw;
-            margin-left: -4vw;
+            margin-top: 3vw;
             word-break: keep-all;
+            font-weight: 500;
+            line-height: 35px;
+            letter-spacing: 1px;
+        }
+        .content__item__desc__left { 
+          font-size: 23px;
+            line-height: 1.4;
+            margin-top: 3vw;
+            word-break: keep-all;
+            font-weight: 500;
+            line-height: 35px;
+            text-align: right;
+            letter-spacing: 1px;
         }
         .content__item:nth-child(even) .content__item__desc {
             margin-left: auto;
@@ -342,6 +357,23 @@
         #contents > section:nth-child(even).show .content__item__desc {
             transform: translateX(0);
         }
+        .mainTextDiv {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+          flex-direction: column;
+        }
+        .titleText {
+          margin-top: 200px;
+          font-size: 60px;
+          font-weight: 900;
+          color: #343434; 
+        }
+        .directText {
+          font-size: 25px;
+          margin-top: 100px;
+        }
+       
     </style>
     
   </head>
@@ -364,99 +396,82 @@
           </div>
         </header>
         </div>
+        <div class="mainTextDiv">
+          <span class="titleText">서비스 소개</span>
+          <div class="directText">Ai SME Story는 부모님의 목소리를 학습시켜,<br> 아이들이 가장 사랑하는 부모님의 목소리로 동화를 들을 수 있도록 설계되었습니다.<br> 아이들은 부모님의 따뜻한 목소리로 들려주는 동화를 통해 더욱 친밀하고 특별한 경험을 하게 됩니다.</div>
+        </div>
         <main id="parallax__cont">
           <div id="contents">
               <section id="section1" class="content__item">
                   <span class="content__item__num">01</span>
-                  <h2 class="content__item__title">section1</h2>
+                  <h2 class="content__item__title">텍스트 생성</h2>
                   <figure class="content__item__imgWrap">
                       <div class="content__item__img"></div>
                   </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <p class="content__item__desc__right">동화책 텍스트 생성을 위해 최신 인공지능 기술인 KoGPT-2를 사용하고 있습니다. KoGPT-2는 한국어에 특화된 GPT-2 모델로, 자연스러운 문장 생성과 창의적인 글쓰기 능력을 자랑합니다. 이를 통해 다양한 스타일과 주제의 동화를 자동으로 생성하여 아이들에게 더 풍부하고 다양한 이야기 경험을 제공합니다</p>
               </section>
               <!-- //section1 -->
   
               <section id="section2" class="content__item">
                   <span class="content__item__num">02</span>
-                  <h2 class="content__item__title">section2</h2>
+                  <h2 class="content__item__title">텍스트 생성</h2>
                   <figure class="content__item__imgWrap">
                       <div class="content__item__img"></div>
                   </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <p class="content__item__desc__left">-전래동화 청와대 어린이 전래동화 100권 <br>-세계 동화 명작 그림형제 번역본 256권 <br>-이솝우화 번역본 233권 탈무드 번역본 72권<br><br>총 학습 데이터 661권을 학습시켰고 이것을 토대로 동화 텍스트를 생성하고 있습니다. </p>
               </section>
               <!-- //section2 -->
   
               <section id="section3" class="content__item">
                   <span class="content__item__num">03</span>
-                  <h2 class="content__item__title">section3</h2>
+                  <h2 class="content__item__title">삽화 생성</h2>
                   <figure class="content__item__imgWrap">
                       <div class="content__item__img"></div>
                   </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <p class="content__item__desc__right">DALL-E는 OpenAI가 개발한 이미지 생성 인공지능입니다. 이 모델은 텍스트 설명을 바탕으로 고유한 이미지를 생성할 수 있는 능력을 갖추고 있습니다. <br>동화 생성 페이지에서 "백경, 강아지, 고양이"라는 키워드로 동화를 생성하면, 그에 맞는 이미지를 자동으로 생성해줍니다.<br><br> DALL-E는 다양한 창의적인 삽화를 제공함으로써, 아이들이 더욱 생생하고 흥미로운 동화책을 경험할 수 있도록 도와줍니다.</p>
               </section>
               <!-- //section3 -->
   
               <section id="section4" class="content__item">
                   <span class="content__item__num">04</span>
-                  <h2 class="content__item__title">section4</h2>
+                  <h2 class="content__item__title">삽화 생성</h2>
                   <figure class="content__item__imgWrap">
                       <div class="content__item__img"></div>
                   </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <p class="content__item__desc__left">위 이미지는 삽화를 생성한 예시입니다.<br><br>동화 텍스트가 생성된 후, 해당 텍스트에 맞는 삽화를 자동으로 생성하여 동화책에 삽입합니다.<br> DALL-E의 강력하고 유연한 이미지 생성 능력을 통해<br> 더욱 풍부하고 생동감 있는 동화책을 제공할 수 있습니다.</p>
               </section>
               <!-- //section4 -->
   
               <section id="section5" class="content__item">
                   <span class="content__item__num">05</span>
-                  <h2 class="content__item__title">section5</h2>
+                  <h2 class="content__item__title">동화 낭독</h2>
                   <figure class="content__item__imgWrap">
                       <div class="content__item__img"></div>
                   </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <p class="content__item__desc__right">Rvc, waveglow 등 타 음성 모델은 한국어를 지원하지 않는 경우가 다수였기 때문에,<br>한국어를 지원하며 학습 결과가 가장 좋았던 Coqui_Xtts-v2 모델 사용하였습니다.<br>정확하고 깨끗한 음성을 만들기 위해 전처리는 Whisper-STT를 통해 진행하였습니다.
+                  </p>
               </section>
               <!-- //section5 -->
   
               <section id="section6" class="content__item">
                   <span class="content__item__num">06</span>
-                  <h2 class="content__item__title">section6</h2>
+                  <h2 class="content__item__title">동화 생성물 예시</h2>
                   <figure class="content__item__imgWrap">
                       <div class="content__item__img"></div>
                   </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <p class="content__item__desc__left">서비스 소개글 작성</p>
               </section>
               <!-- //section6 -->
   
               <section id="section7" class="content__item">
                   <span class="content__item__num">07</span>
-                  <h2 class="content__item__title">section7</h2>
-                  <figure class="content__item__imgWrap">
-                      <div class="content__item__img"></div>
-                  </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
+                  <h2 class="content__item__title">서비스 요약</h2>
+                  <div class="imgDiv">
+                    <img src="/static/img/요약.png">
+                  </div>
+                  <p class="content__item__desc__right"></p>
               </section>
               <!-- //section7 -->
-  
-              <section id="section8" class="content__item">
-                  <span class="content__item__num">08</span>
-                  <h2 class="content__item__title">section8</h2>
-                  <figure class="content__item__imgWrap">
-                      <div class="content__item__img"></div>
-                  </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
-              </section>
-              <!-- //section8 -->
-  
-              <section id="section9" class="content__item">
-                  <span class="content__item__num">09</span>
-                  <h2 class="content__item__title">section9</h2>
-                  <figure class="content__item__imgWrap">
-                      <div class="content__item__img"></div>
-                  </figure>
-                  <p class="content__item__desc">서비스 소개글 작성</p>
-              </section>
-              <!-- //section9 -->
-          </div>
-      </main>
 
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
     <div class="row">

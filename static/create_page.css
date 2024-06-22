@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Jua&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -5,7 +6,7 @@
 body {
   margin: 0 auto;
   color: #3f464d;
-  font-family: "Spoqa Han Sans Neo", "Sans-serif";
+  font-family: "IBM Plex Sans KR", sans-serif;
 }
 
 a {
